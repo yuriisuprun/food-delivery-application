@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Order {
 
-    private int orderId;
-    private List<Product> dishes;
+    private int id;
+    private Customer customer;
+    private List<Product> products;
 }

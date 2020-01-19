@@ -1,6 +1,12 @@
 package com.fooddelivery.model;
 
-public abstract class Product {
+import java.math.BigDecimal;
+import java.util.List;
 
-    private String price;
+public class Product {
+
+    private int id;
+    private String name;
+    private BigDecimal price;
+    private List<Order> orders;
 }
