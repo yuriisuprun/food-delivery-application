@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.43, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.44, for Win64 (x86_64)
 --
--- Host: localhost    Database: food_application
+-- Host: 127.0.0.1    Database: food_application
 -- ------------------------------------------------------
--- Server version	5.6.43-log
+-- Server version	5.6.44-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,31 +14,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Table structure for table `customer`
---
-
-DROP TABLE IF EXISTS `customer`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `customer` (
-  `id` int(11) NOT NULL,
-  `first_name` varchar(255) DEFAULT NULL,
-  `last_name` varchar(255) DEFAULT NULL,
-  `registration_date` datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `customer`
---
-
-LOCK TABLES `customer` WRITE;
-/*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-/*!40000 ALTER TABLE `customer` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `customers`
@@ -127,7 +102,7 @@ CREATE TABLE `orders` (
   KEY `customer_id` (`customer_id`),
   CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`),
   CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -136,7 +111,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,'ready',1),(2,'accepted',2);
+INSERT INTO `orders` VALUES (1,'new',1),(2,'in progress',2),(3,'new',8),(4,'new',8),(5,'new',4),(6,'new',4);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,7 +138,7 @@ CREATE TABLE `orders_products` (
 
 LOCK TABLES `orders_products` WRITE;
 /*!40000 ALTER TABLE `orders_products` DISABLE KEYS */;
-INSERT INTO `orders_products` VALUES (1,1),(1,2);
+INSERT INTO `orders_products` VALUES (1,1),(2,2),(3,2),(4,1),(4,2),(5,1),(5,2),(6,1),(6,2);
 /*!40000 ALTER TABLE `orders_products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -179,7 +154,7 @@ CREATE TABLE `products` (
   `name` varchar(45) DEFAULT NULL,
   `price` decimal(10,0) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -188,7 +163,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'Pizza Margherita',24),(2,'Sushi Unagi',32);
+INSERT INTO `products` VALUES (1,'Pizza Margherita',24),(2,'Sushi Unagi',32),(3,'Pasta Bolognese',10);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -225,4 +200,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-23 10:27:22
+-- Dump completed on 2020-01-24 13:51:15
