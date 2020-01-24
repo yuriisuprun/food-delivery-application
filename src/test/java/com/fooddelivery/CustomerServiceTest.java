@@ -18,5 +18,4 @@ class CustomerServiceTest {
 		String lastName = customerService.getCustomerById(1).getLastName();
 		assertEquals("Carter", lastName);
 	}
-
 }
