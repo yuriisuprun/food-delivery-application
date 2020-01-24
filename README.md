@@ -1,17 +1,17 @@
 # Food-delivery-application
   
 ## Technoligies and tools
-*Spring Boot
+Spring Boot
 
-*Spring MVC
+Spring MVC
 
-*JPA
+JPA
 
-*Hibernate
+Hibernate
 
-*MySql
+MySql
 
-*AngularJS
+AngularJS
 
   
 ## Launching
