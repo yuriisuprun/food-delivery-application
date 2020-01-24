@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -33,5 +34,9 @@ public class CustomerService {
         Set<Customer> customerSet = new HashSet<>();
         customerRepository.findAll().forEach(customerSet::add);
         return new TreeSet<>(customerSet);
+    }
+
+    public Customer getCustomerById(int customerId){
+        return customerRepository.findById(customerId).get();
     }
 }
