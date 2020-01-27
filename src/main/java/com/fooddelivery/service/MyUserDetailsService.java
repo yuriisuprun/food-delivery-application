@@ -1,6 +1,6 @@
 package com.fooddelivery.service;
 
-import com.fooddelivery.model.MyUserDetails;
+import com.fooddelivery.model.CustomUserDetails;
 import com.fooddelivery.model.User;
 import com.fooddelivery.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +22,11 @@ public class MyUserDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String firstName) throws UsernameNotFoundException {
-        Optional<User> user = userRepository.findByFirstName(firstName);
+    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+        Optional<User> user = userRepository.findByLogin(login);
 
-        user.orElseThrow(() -> new UsernameNotFoundException("Not found: " + firstName));
+        user.orElseThrow(() -> new UsernameNotFoundException("Not found: " + login));
 
-        return user.map(MyUserDetails::new).get();
+        return user.map(CustomUserDetails::new).get();
     }
 }

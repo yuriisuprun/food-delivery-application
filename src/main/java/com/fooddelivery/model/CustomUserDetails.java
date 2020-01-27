@@ -9,9 +9,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MyUserDetails implements UserDetails {
+public class CustomUserDetails implements UserDetails {
 
-    private String firstName;
+    private String login;
 
     private String password;
 
@@ -19,14 +19,13 @@ public class MyUserDetails implements UserDetails {
 
     private List<GrantedAuthority> authorities;
 
-    public MyUserDetails(User user) {
-        this.firstName = user.getFirstName();
+    public CustomUserDetails(User user) {
+        this.login = user.getLogin();
         this.password = user.getPassword();
         this.active = user.isActive();
         this.authorities = Arrays.stream(user.getRoles().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
-        System.out.println(user);
     }
 
     @Override
@@ -41,7 +40,7 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return firstName;
+        return login;
     }
 
     @Override
