@@ -19,14 +19,18 @@ import java.util.List;
 @RestController
 public class OrderController {
 
-    @Autowired
     private OrderService orderService;
 
-    @Autowired
     private ProductService productService;
 
-    @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    public OrderController(OrderService orderService, ProductService productService, CustomerService customerService) {
+        this.orderService = orderService;
+        this.productService = productService;
+        this.customerService = customerService;
+    }
 
     @GetMapping("/orders")
     public Iterable<Order> allOrders(Model model){

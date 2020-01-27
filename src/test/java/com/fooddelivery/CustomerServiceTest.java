@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest
+//@SpringBootTest
 class CustomerServiceTest {
 
 	@Autowired
@@ -18,5 +18,4 @@ class CustomerServiceTest {
 		String lastName = customerService.getCustomerById(1).getLastName();
 		assertEquals("Carter", lastName);
 	}
-
 }

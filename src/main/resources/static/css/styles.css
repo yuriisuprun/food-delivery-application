@@ -1,0 +1,12 @@
+#error {
+    border-color: darkred;
+    background-color: aliceblue;
+}
+
+h2 {
+    color: red;
+}
+
+h3 {
+    color: darkred;
+}
