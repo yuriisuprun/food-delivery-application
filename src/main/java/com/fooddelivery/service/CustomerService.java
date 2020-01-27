@@ -12,8 +12,12 @@ import java.util.TreeSet;
 @Service
 public class CustomerService {
 
-    @Autowired
     private CustomerRepository customerRepository;
+
+    @Autowired
+    public CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
     public Iterable<Customer> allCustomers(){
         return customerRepository.findAll();

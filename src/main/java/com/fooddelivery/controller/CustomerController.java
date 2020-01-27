@@ -13,10 +13,14 @@ import java.util.Set;
 @RestController
 public class CustomerController {
 
-    @Autowired
     private CustomerService customerService;
 
-    @GetMapping("/customers")
+    @Autowired
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
+
+    @GetMapping("/customer")
     public Iterable<Customer> allCustomers() {
         return customerService.allCustomers();
     }
