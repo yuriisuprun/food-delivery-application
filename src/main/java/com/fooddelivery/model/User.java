@@ -31,6 +31,7 @@ public class User {
     @Column(name = "active")
     private boolean active;
 
+    @Column(name = "roles")
     private String roles;
 
     /*@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
