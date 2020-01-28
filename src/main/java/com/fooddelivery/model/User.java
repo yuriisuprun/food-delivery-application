@@ -5,7 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.util.Collection;
 
 @Entity
 @Table(name = "users")
@@ -25,15 +29,14 @@ public class User {
     @Column(name = "login")
     private String login;
 
-    @Column(name = "active")
-    private boolean active;
+    @Column(name = "enabled")
+    private boolean enabled;
 
-    @Column(name = "roles")
-    private String roles;
-
-    /*@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"))
-    private Set<Role> roles;*/
+    @ManyToMany
+    @JoinTable(name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    private Collection<Role> roles;
 
     public int getId() {
         return id;
@@ -67,19 +70,19 @@ public class User {
         this.login = login;
     }
 
-    public boolean isActive() {
-        return active;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
-    public String getRoles() {
+    public Collection<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(String roles) {
+    public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
 
@@ -89,9 +92,9 @@ public class User {
                 "id=" + id +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", firstName='" + login + '\'' +
-                ", active=" + active +
-                ", roles='" + roles + '\'' +
+                ", login='" + login + '\'' +
+                ", enabled=" + enabled +
+                ", roles=" + roles +
                 '}';
     }
 }

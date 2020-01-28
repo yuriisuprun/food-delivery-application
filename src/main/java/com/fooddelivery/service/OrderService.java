@@ -6,6 +6,8 @@ import com.fooddelivery.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class OrderService {
 
@@ -16,9 +18,9 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-    public Iterable<Order> allOrders() {
+    public Iterable<Order> findAllOrders() {
         try {
-            if(orderRepository.findAll() == null){
+            if (orderRepository.findAll() == null) {
                 throw new OrdersNotFoundException();
             }
         } catch (OrdersNotFoundException e) {
@@ -27,7 +29,15 @@ public class OrderService {
         return orderRepository.findAll();
     }
 
-    public Order addOrder(Order order){
+    public Order addOrder(Order order) {
         return orderRepository.save(order);
+    }
+
+    public Optional<Order> findOrderById(int id) {
+        return orderRepository.findById(id);
+    }
+
+    public void deleteOrder(int id) {
+        orderRepository.deleteById(id);
     }
 }
