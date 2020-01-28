@@ -11,7 +11,7 @@ JPA
 
 Hibernate
 
-MySql
+MySQL 5.6
 
 AngularJS
 
