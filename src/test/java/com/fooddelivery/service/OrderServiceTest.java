@@ -15,6 +15,6 @@ public class OrderServiceTest {
     @Test
     void shouldReturnCustomerFirstNameOfOrder() {
         String firstName = orderService.findOrderById(2).get().getCustomer().getFirstName();
-        assertEquals("Theodore", firstName);
+        assertEquals("dore", firstName);
     }
 }
