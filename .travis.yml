@@ -2,7 +2,7 @@ group: deprecated-2017Q4
 dist: xenial
 os:
   linux
-language: java
+language: generic
 jdk:
   openjdk8
 cache:
@@ -12,7 +12,3 @@ install:
   mvn clean install -Dgpg.skip=true
 after_success:
   mvn package -DskipTests
-language: ruby
-rvm:
- 2.2
- jruby
