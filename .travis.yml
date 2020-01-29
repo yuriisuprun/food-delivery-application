@@ -2,4 +2,27 @@ group: deprecated-2017Q4
 
 dist: xenial
 
+os: linux
+  
+language: generic
 
+jdk: openjdk8
+  
+cache:
+  directories:
+    $HOME/.m2
+
+# for skipping tests
+#install: true
+  
+#after_success: mvn package -DskipTests
+
+services:
+  - mysql
+  
+#before_install:
+ # - mysql -u root --password="" < sql/dump.sql
+ 
+before_script:
+  - mysql -e 'create database food_application;'
+  - mysql -u root food_application < sql/dump.sql
