@@ -1,5 +1,5 @@
 group: deprecated-2017Q4
-dist: trusty
+dist: xenial
 os:
   - linux
 language: java
@@ -8,6 +8,8 @@ cache:
     - $HOME/.m2
 jdk:
   - oraclejdk8
+  - oraclejdk9
+  - openjdk8
 cache:
   directories:
     -$HOME/.m2
