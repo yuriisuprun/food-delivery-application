@@ -1,18 +1,18 @@
 group: deprecated-2017Q4
 dist: xenial
 os:
-  - linux
+  linux
 language: java
 jdk:
-  - openjdk8
+  openjdk8
 cache:
   directories:
-    -$HOME/.m2
+    $HOME/.m2
 install:
-  - mvn clean install -Dgpg.skip=true
+  mvn clean install -Dgpg.skip=true
 after_success:
-  - mvn package -DskipTests
+  mvn package -DskipTests
 language: ruby
 rvm:
- - 2.2
- - jruby
+ 2.2
+ jruby
