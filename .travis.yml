@@ -9,6 +9,6 @@ cache:
   directories:
     $HOME/.m2
 install:
-  mvn clean install -Dgpg.skip=true
+  true
 after_success:
   mvn package -DskipTests

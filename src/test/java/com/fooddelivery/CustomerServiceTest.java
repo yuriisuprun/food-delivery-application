@@ -10,12 +10,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 class CustomerServiceTest {
 
-	/*@Autowired
+	@Autowired
 	private CustomerService customerService;
 
 	@Test
 	void shouldReturnCustomerLastName() {
 		String lastName = customerService.getCustomerById(1).getLastName();
 		assertEquals("Carter", lastName);
-	}*/
+	}
 }
