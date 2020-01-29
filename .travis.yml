@@ -1,14 +1,18 @@
 group: deprecated-2017Q4
+
 dist: xenial
-os:
-  linux
+
+os: linux
+  
 language: generic
-jdk:
-  openjdk8
+
+jdk: openjdk8
+  
 cache:
   directories:
     $HOME/.m2
-install:
-  true
-after_success:
-  mvn package -DskipTests
+
+# for skipping tests
+install: true
+  
+after_success: mvn package -DskipTests
