@@ -19,3 +19,6 @@ after_success: mvn package -DskipTests
 
 services:
   - mysql
+  
+before_install:
+  - mysql -u root --password="root" < sql/dump.sql
