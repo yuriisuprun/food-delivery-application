@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE suppressions PUBLIC
+        "-//Puppy Crawl//DTD Suppressions 1.0//EN"
+        "http://www.puppycrawl.com/dtds/suppressions_1_0.dtd">
+<suppressions>
+    <suppress checks="JavadocMethod" files="[\\/]dto[\\/].+.java"/>
+    <suppress checks="JavadocMethod" files=".+Entity.java"/>
+    <suppress checks=".*" files="test[\\/]"/>
+    <suppress checks="JavadocMethod" files=".+Status.java"/>
+    <suppress checks="JavadocMethod" files=".+Projection.java"/>
+    <suppress checks="JavadocMethod" files=".+Filter.java"/>
+    <suppress checks="JavadocMethod" files=".+Key.java"/>
+    <suppress checks="JavadocMethod" files="UserTitle.java" lines="15"/>
+    <suppress checks="JavadocMethod" files="ComplexityLevel.java"/>
+    <suppress checks="JavadocMethod" files="FtsQuery.+java"/>
+    <suppress checks="JavadocMethod" files="UserPrincipal.java"/>
+    <suppress checks="JavadocMethod" files="Admin.+java"/>
+    <suppress checks="JavadocMethod" files=".+AuthenticatedPrincipal.java"/>
+    <suppress checks="JavadocMethod" files="ApiCredentials.java"/>
+    <suppress checks="JavadocMethod" files="AutograderResponse.java"/>
+    <suppress checks="JavadocMethod" files="AutograderRequest.java"/>
+    <suppress checks="JavadocMethod" files="MailNotification.java"/>
+    <suppress checks="JavadocMethod" files="MailConfiguration.java"/>
+</suppressions>
