@@ -22,15 +22,3 @@ services:
   
 #before_install:
  # - mysql -u root --password="" < sql/dump.sql
-  
-env:
-    travis:
-        modules:
-            config:
-                Db:
-                    dsn: 'mysql:host=localhost;dbname=food_application'
-                    user: 'root'
-                    password: ''
-                    dump: 'sql/dump.sql'
-                    populate: true
-                    cleanup: true
