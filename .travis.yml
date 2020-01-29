@@ -22,3 +22,6 @@ services:
   
 #before_install:
  # - mysql -u root --password="" < sql/dump.sql
+ 
+before_script:
+  - mysql -e 'create database food_application;'
