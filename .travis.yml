@@ -21,4 +21,4 @@ services:
   - mysql
   
 before_install:
-  - mysql -u root --password="root" < sql/dump.sql
+  - mysql -u root --password=root < sql/dump.sql
