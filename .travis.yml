@@ -1,5 +1,5 @@
 group: deprecated-2017Q4
-dist: xenial
+dist: trusty
 os:
   - linux
 language: java
