@@ -1,5 +1,6 @@
 package com.fooddelivery.config;
 
+import com.fooddelivery.constant.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -24,9 +25,9 @@ public class SpringSecurityWebAppConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admin", "/order*").hasAuthority("ADMIN")
-                .antMatchers("/customer").hasAnyAuthority("ADMIN")
-                .antMatchers("/user").hasAnyAuthority("ADMIN", "USER")
+                .antMatchers("/admin", "/order*").hasAuthority(Constants.ADMIN)
+                .antMatchers("/customer").hasAnyAuthority(Constants.ADMIN)
+                .antMatchers("/user").hasAnyAuthority(Constants.ADMIN, Constants.USER)
                 .antMatchers("/").permitAll()
                 .and().formLogin();
     }
