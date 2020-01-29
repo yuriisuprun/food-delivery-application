@@ -16,3 +16,6 @@ cache:
 install: true
   
 after_success: mvn package -DskipTests
+
+services:
+  - mysql
