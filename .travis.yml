@@ -1,12 +1,10 @@
 group: deprecated-2017Q4
 
-dist: xenial
 
-os: linux
   
 language: generic
 
-
+jdk: openjdk8
   
 cache:
   directories:
