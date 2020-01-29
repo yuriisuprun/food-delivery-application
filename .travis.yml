@@ -21,6 +21,7 @@ services:
   - mysql
   
 #before_install:
+
  # - mysql -u root --password="" < sql/dump.sql
  
  addons:
