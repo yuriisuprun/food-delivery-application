@@ -23,12 +23,12 @@ public class Customer extends Person {
     public Customer() {
     }
 
-    public Customer(int id, String firstName, String lastName) {
-        super(id, firstName, lastName);
-    }
-
     public Customer(String firstName, String lastName) {
         super(firstName, lastName);
+    }
+
+    public Customer(int id, String firstName, String lastName) {
+        super(id, firstName, lastName);
     }
 
     public Customer(int id, String firstName, String lastName, LocalDateTime registrationDate, List<Order> orders) {

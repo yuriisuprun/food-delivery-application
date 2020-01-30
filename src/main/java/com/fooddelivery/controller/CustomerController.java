@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Set;
 
 @RestController
+@RequestMapping(path = "/customer")
 public class CustomerController {
 
     private CustomerService customerService;
@@ -20,27 +21,27 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping("/customer")
+    @GetMapping("/")
     public Iterable<Customer> allCustomers() {
         return customerService.allCustomers();
     }
 
-    @GetMapping("/customer/{id}")
+    @GetMapping("/{id}")
     public Customer getCustomerById(@PathVariable("id") int id) {
         return customerService.getCustomerById(id);
     }
 
-    @RequestMapping("/customer/{firstName}/{lastName}")
+    @RequestMapping("/{firstName}/{lastName}")
     public Customer addCustomer(@PathVariable("firstName") String firstName, @PathVariable("lastName") String lastName) {
         return customerService.addCustomer(firstName, lastName);
     }
 
-    @GetMapping("customer/unique")
+    @GetMapping("/unique")
     public Set<Customer> getUniqueCustomerByLastNames() {
         return customerService.getUniqueCustomerByLastNames();
     }
 
-    @GetMapping("customer/sorted")
+    @GetMapping("/sorted")
     public Set<Customer> getSortedUniqueCustomerLastNames() {
         return customerService.getSortedUniqueCustomerByLastNames();
     }
