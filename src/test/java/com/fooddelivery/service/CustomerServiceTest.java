@@ -38,7 +38,7 @@ public class CustomerServiceTest {
 	@Test
 	public void shouldAddCustomer() {
 		when(customerRepository.save(customer)).thenReturn(any(Customer.class));
-		customerService.addCustomer("Jimmy", "Carter");
+		customerService.addCustomer("Jimmy", "Carters");
 		verify(customerRepository).save(customer);
 	}
 }
