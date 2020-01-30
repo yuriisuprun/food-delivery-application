@@ -13,9 +13,3 @@ cache:
     $HOME/.m2
 
 script: - mvn clean test
-
-notifications:
-  email: true
-  
-install:
-- mvn install -DskipTests=false -Dmaven.javadoc.skip=true -B -V
