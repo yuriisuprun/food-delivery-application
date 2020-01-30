@@ -6,15 +6,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest
+//@SpringBootTest
 public class OrderServiceTest {
 
-    @Autowired
+    /*@Autowired
     private OrderService orderService;
 
     @Test
     void shouldReturnCustomerFirstNameOfOrder() {
         String firstName = orderService.findOrderById(2).get().getCustomer().getFirstName();
         assertEquals("Theodore", firstName);
-    }
+    }*/
 }
