@@ -13,9 +13,9 @@ cache:
     $HOME/.m2
 
 # for skipping tests
-install: true
+#install: true
   
-after_success: mvn package -DskipTests
+#after_success: mvn package -DskipTests
 
 #services:
   #- mysql
