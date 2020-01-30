@@ -29,12 +29,9 @@ public class CustomerServiceTest {
 
 	@Before
 	public void setUp() {
-		customer1 = new Customer("Jimmy", "Carter");
-		customer1.setId(1);
-		customer2 = new Customer("Theodore", "Roosevelt");
-		customer2.setId(2);
-		customer3 = new Customer("Harry", "Truman");
-		customer3.setId(3);
+		customer1 = new Customer(1, "Jimmy", "Carter");
+		customer2 = new Customer(2, "Theodore", "Roosevelt");
+		customer3 = new Customer(3, "Harry", "Truman");
 	}
 
 	@Test
