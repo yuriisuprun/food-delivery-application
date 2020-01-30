@@ -15,7 +15,7 @@ cache:
 after_success: mvn clean test
 
 notifications:
-  email: false
+  email: true
 
 # for skipping tests
 #install: true
