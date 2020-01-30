@@ -1,6 +1,6 @@
 group: deprecated-2017Q4
 
-dist: xenial
+dist: bionic
 
 os: linux
   
