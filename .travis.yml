@@ -13,3 +13,6 @@ cache:
     $HOME/.m2
 
 script: - mvn clean test
+  
+install:
+- mvn install -DskipTests=false -Dmaven.javadoc.skip=true -B -V
