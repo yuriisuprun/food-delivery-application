@@ -16,18 +16,3 @@ after_success: mvn clean test
 
 notifications:
   email: true
-
-# for skipping tests
-#install: true
-  
-#after_success: mvn package -DskipTests
-
-#services:
-  #- mysql
-  
-#before_install:
-  # - mysql -u root --password="" < sql/dump.sql
- 
-#before_script:
-  #- mysql -e 'create database food_application;'
-  #- mysql -u root food_application < sql/dump.sql
