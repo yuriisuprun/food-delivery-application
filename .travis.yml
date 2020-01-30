@@ -1,12 +1,12 @@
 group: deprecated-2017Q4
 
-dist: bionic
+dist: xenial
 
 os: linux
   
 language: generic
 
-jdk: openjdk13
+jdk: openjdk8
   
 cache:
   directories:
