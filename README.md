@@ -15,6 +15,8 @@ MySQL 5.6
 
 AngularJS
 
+JUnit 4
+
 Travis CI
 
   
