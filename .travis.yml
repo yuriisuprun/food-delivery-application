@@ -14,5 +14,6 @@ cache:
     
 install:
 - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
 script:
-- mvn test
+- mvn clean test
