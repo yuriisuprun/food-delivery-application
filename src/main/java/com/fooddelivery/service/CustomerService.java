@@ -27,13 +27,13 @@ public class CustomerService {
         return customerRepository.save(new Customer(firstName, lastName));
     }
 
-    public Set<Customer> getUniqueCustomerLastNames() {
+    public Set<Customer> getUniqueCustomerByLastNames() {
         Set<Customer> customerSet = new HashSet<>();
         customerRepository.findAll().forEach(customerSet::add);
         return customerSet;
     }
 
-    public Set<Customer> getSortedUniqueCustomerLastNames() {
+    public Set<Customer> getSortedUniqueCustomerByLastNames() {
         Set<Customer> customerSet = new HashSet<>();
         customerRepository.findAll().forEach(customerSet::add);
         return new TreeSet<>(customerSet);

@@ -25,18 +25,23 @@ public class CustomerController {
         return customerService.allCustomers();
     }
 
+    @GetMapping("/customer/{id}")
+    public Customer getCustomerById(@PathVariable("id") int id) {
+        return customerService.getCustomerById(id);
+    }
+
     @RequestMapping("/customer/{firstName}/{lastName}")
     public Customer addCustomer(@PathVariable("firstName") String firstName, @PathVariable("lastName") String lastName) {
         return customerService.addCustomer(firstName, lastName);
     }
 
-    @GetMapping("/unique")
-    public Set<Customer> getUniqueCustomerLastNames() {
-        return customerService.getUniqueCustomerLastNames();
+    @GetMapping("customer/unique")
+    public Set<Customer> getUniqueCustomerByLastNames() {
+        return customerService.getUniqueCustomerByLastNames();
     }
 
-    @GetMapping("/sorted")
+    @GetMapping("customer/sorted")
     public Set<Customer> getSortedUniqueCustomerLastNames() {
-        return customerService.getSortedUniqueCustomerLastNames();
+        return customerService.getSortedUniqueCustomerByLastNames();
     }
 }
