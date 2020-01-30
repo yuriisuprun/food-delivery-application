@@ -13,16 +13,16 @@ cache:
     $HOME/.m2
 
 # for skipping tests
-#install: true
+install: true
   
-#after_success: mvn package -DskipTests
+after_success: mvn package -DskipTests
 
-services:
-  - mysql
+#services:
+  #- mysql
   
 #before_install:
- # - mysql -u root --password="" < sql/dump.sql
+  # - mysql -u root --password="" < sql/dump.sql
  
-before_script:
-  - mysql -e 'create database food_application;'
-  - mysql -u root food_application < sql/dump.sql
+#before_script:
+  #- mysql -e 'create database food_application;'
+  #- mysql -u root food_application < sql/dump.sql
