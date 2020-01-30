@@ -4,7 +4,7 @@ dist: bionic
 
 os: linux
   
-language: java
+language: generic
 
 jdk: openjdk13
   
