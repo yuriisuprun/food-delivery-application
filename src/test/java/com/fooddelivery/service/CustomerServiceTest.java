@@ -1,19 +1,20 @@
 package com.fooddelivery.service;
 
+import com.fooddelivery.model.Customer;
 import com.fooddelivery.repository.CustomerRepository;
-import com.fooddelivery.service.CustomerService;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-//@ExtendWith(MockitoJUnitRunner.class)
-class CustomerServiceTest {
+@RunWith(MockitoJUnitRunner.class)
+public class CustomerServiceTest {
 
 	@InjectMocks
 	private CustomerService customerService;
@@ -21,17 +22,23 @@ class CustomerServiceTest {
 	@Mock
 	private CustomerRepository customerRepository;
 
-	@Test
-	void shouldReturnCustomerLastName() {
-		String lastName = customerService.getCustomerById(1).getLastName();
-		assertEquals("Carter", lastName);
+	private Customer customer;
+
+	@Before
+	public void setUp() {
+		customer = new Customer("Jimmy", "Carter");
 	}
 
 	/*@Test
-	public void should() {
-		locationService.save(location);
-		Mockito
-				.verify(locationRepository, Mockito.atLeastOnce())
-				.save(location);
+	void shouldReturnCustomerLastName() {
+		String lastName = customerService.getCustomerById(1).getLastName();
+		assertEquals("Carter", lastName);
 	}*/
+
+	@Test
+	public void shouldAddCustomer() {
+		when(customerRepository.save(customer)).thenReturn(any(Customer.class));
+		customerService.addCustomer("Jimmy", "Carter");
+		verify(customerRepository).save(customer);
+	}
 }
