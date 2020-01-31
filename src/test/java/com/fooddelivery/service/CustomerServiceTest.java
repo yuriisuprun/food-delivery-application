@@ -39,6 +39,7 @@ public class CustomerServiceTest {
 		customer3 = new Customer(3, "Harry", "Truman");
 
 		customers = new ArrayList<Customer>();
+
 		customers.add(customer1);
 		customers.add(customer2);
 		customers.add(customer3);
@@ -64,7 +65,7 @@ public class CustomerServiceTest {
 	}
 
 	@Test
-	public void shouldFindAllEmployees() {
+	public void shouldFindAllCustomers() {
 		when(customerRepository.findAll()).thenReturn(customers);
 
 		List<Customer> customerList = (List<Customer>) customerService.allCustomers();
