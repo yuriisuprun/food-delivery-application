@@ -1,5 +1,3 @@
-# Food-delivery-application
-
 ![Food delivery application](/src/main/resources/image/app.png)
   
 ## Technoligies and tools
