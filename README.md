@@ -1,15 +1,15 @@
 # Food-delivery-application
   
 ## Technoligies and tools
-- Spring Boot
+- Spring Boot 2.2
 
-- Spring MVC
+- Spring WEB 5.2
 
-- Spring Security
+- Spring Security 5.2
 
 - JPA
 
-- Hibernate
+- Hibernate 5.4
 
 - MySQL 5.6
 
@@ -17,7 +17,7 @@
 
 - JUnit 4
 
-- Mockito
+- Mockito 3.1
 
 - Travis CI
 
