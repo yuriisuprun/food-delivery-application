@@ -1,4 +1,4 @@
-# Food-delivery-application
+# **Food-delivery-application**
   
 ## Technoligies and tools
 Spring Boot
