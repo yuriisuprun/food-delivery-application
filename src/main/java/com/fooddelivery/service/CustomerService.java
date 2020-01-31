@@ -40,8 +40,12 @@ public class CustomerService {
         return new TreeSet<>(customerSet);
     }
 
-    public Customer getCustomerById(int id){
+    public Customer getCustomerById(int id) {
         return customerRepository.findById(id)
                 .orElseThrow(() -> new CustomerNotFoundException(id));
+    }
+
+    public void deleteCustomerById(int id) {
+        customerRepository.deleteById(id);
     }
 }

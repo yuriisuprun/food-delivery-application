@@ -3,6 +3,7 @@ package com.fooddelivery.controller;
 import com.fooddelivery.model.Customer;
 import com.fooddelivery.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Set;
 
 @RestController
-@RequestMapping(path = "/customer")
+@RequestMapping("/customer")
 public class CustomerController {
 
     private CustomerService customerService;
@@ -26,7 +27,7 @@ public class CustomerController {
         return customerService.allCustomers();
     }
 
-    @GetMapping("/{id}")
+    @RequestMapping("/{id}")
     public Customer getCustomerById(@PathVariable("id") int id) {
         return customerService.getCustomerById(id);
     }
@@ -36,13 +37,18 @@ public class CustomerController {
         return customerService.addCustomer(firstName, lastName);
     }
 
-    @GetMapping("/unique")
+    @RequestMapping("/unique-customers-by-last-names")
     public Set<Customer> getUniqueCustomerByLastNames() {
         return customerService.getUniqueCustomerByLastNames();
     }
 
-    @GetMapping("/sorted")
+    @RequestMapping("/sorted-customers-by-last-names")
     public Set<Customer> getSortedUniqueCustomerLastNames() {
         return customerService.getSortedUniqueCustomerByLastNames();
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCustomerById(@PathVariable int id) {
+        customerService.deleteCustomerById(id);
     }
 }

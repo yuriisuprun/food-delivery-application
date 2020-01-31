@@ -37,7 +37,7 @@ public class OrderService {
         return orderRepository.findById(id);
     }
 
-    public void deleteOrder(int id) {
+    public void deleteOrderById(int id) {
         orderRepository.deleteById(id);
     }
 }

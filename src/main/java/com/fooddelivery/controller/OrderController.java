@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/order")
 public class OrderController {
 
     private OrderService orderService;
@@ -35,12 +36,12 @@ public class OrderController {
         this.customerService = customerService;
     }
 
-    @GetMapping("/order")
-    public Iterable<Order> findAllOrders(Model model) {
+    @RequestMapping("/")
+    public Iterable<Order> findAllOrders() {
         return orderService.findAllOrders();
     }
 
-    @RequestMapping("/order/{customerId}/{productIds}")
+    @RequestMapping("/{customerId}/{productIds}")
     public Order addOrder(@PathVariable("customerId") int customerId, @PathVariable("productIds") int[] productIds) {
         String status = "new";
         List<Product> productList = new ArrayList<>();
@@ -55,23 +56,23 @@ public class OrderController {
         return orderService.addOrder(new Order(status, customer, productList));
     }
 
-    @PutMapping("/employees/{id}")
-    public Order updateOrder(@RequestBody Order order, @PathVariable int id) {
+    @PutMapping("/{id}")
+    public Order updateOrder(@RequestBody Order orderForUpdating, @PathVariable int id) {
 
         return orderService.findOrderById(id)
-                .map(employee -> {
-                    order.setStatus(order.getStatus());
-                    order.setProducts(order.getProducts());
+                .map(order -> {
+                    order.setStatus(orderForUpdating.getStatus());
+                    order.setProducts(orderForUpdating.getProducts());
                     return orderService.addOrder(order);
                 })
                 .orElseGet(() -> {
-                    order.setId(id);
-                    return orderService.addOrder(order);
+                    orderForUpdating.setId(id);
+                    return orderService.addOrder(orderForUpdating);
                 });
     }
 
-    @DeleteMapping("/order/{customerId}")
-    public void deleteOrder(@PathVariable("customerId") int id) {
-        orderService.deleteOrder(id);
+    @DeleteMapping("/{customerId}")
+    public void deleteOrderById(@PathVariable("customerId") int id) {
+        orderService.deleteOrderById(id);
     }
 }
