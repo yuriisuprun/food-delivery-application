@@ -17,6 +17,8 @@ AngularJS
 
 JUnit 4
 
+Mockito
+
 Travis CI
 
   
