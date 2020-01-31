@@ -1,6 +1,6 @@
 package com.fooddelivery.service;
 
-import com.fooddelivery.exception.OrdersNotFoundException;
+import com.fooddelivery.exception.OrderNotFoundException;
 import com.fooddelivery.model.Order;
 import com.fooddelivery.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +21,9 @@ public class OrderService {
     public Iterable<Order> findAllOrders() {
         try {
             if (orderRepository.findAll() == null) {
-                throw new OrdersNotFoundException();
+                throw new OrderNotFoundException();
             }
-        } catch (OrdersNotFoundException e) {
+        } catch (OrderNotFoundException e) {
             System.out.println("No Order Found Here...");
         }
         return orderRepository.findAll();

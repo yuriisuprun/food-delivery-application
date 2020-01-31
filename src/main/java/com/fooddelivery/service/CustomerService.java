@@ -1,5 +1,6 @@
 package com.fooddelivery.service;
 
+import com.fooddelivery.exception.CustomerNotFoundException;
 import com.fooddelivery.model.Customer;
 import com.fooddelivery.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,8 @@ public class CustomerService {
         return new TreeSet<>(customerSet);
     }
 
-    public Customer getCustomerById(int customerId){
-        return customerRepository.findById(customerId).get();
+    public Customer getCustomerById(int id){
+        return customerRepository.findById(id)
+                .orElseThrow(() -> new CustomerNotFoundException(id));
     }
 }
