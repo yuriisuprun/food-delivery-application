@@ -1,6 +1,6 @@
 # Food-delivery-application
 
-![Tux, the Linux mascot](/assets/images/tux.png)
+![Food delivery application](/src/main/resources/image/app.png)
   
 ## Technoligies and tools
 - Spring Boot 2.2
