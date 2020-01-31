@@ -1,25 +1,25 @@
-# **Food-delivery-application**
+# Food-delivery-application
   
 ## Technoligies and tools
-Spring Boot
+- Spring Boot
 
-Spring MVC
+- Spring MVC
 
-Spring Security
+- Spring Security
 
-JPA
+- JPA
 
-Hibernate
+- Hibernate
 
-MySQL 5.6
+- MySQL 5.6
 
-AngularJS
+- AngularJS
 
-JUnit 4
+- JUnit 4
 
-Mockito
+- Mockito
 
-Travis CI
+- Travis CI
 
   
 ## Launching
