@@ -1,5 +1,6 @@
 package com.fooddelivery.service;
 
+import com.fooddelivery.exception.CustomerNotFoundException;
 import com.fooddelivery.model.Customer;
 import com.fooddelivery.repository.CustomerRepository;
 import org.junit.Before;
@@ -72,5 +73,10 @@ public class CustomerServiceTest {
 
 		assertEquals(3, customerList.size());
 		verify(customerRepository, times(1)).findAll();
+	}
+
+	@Test(expected = CustomerNotFoundException.class)
+	public void whenNoCustomerWithId_thenThrowCustomerNotFoundException() {
+		customerService.getCustomerById(2);
 	}
 }
