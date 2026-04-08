@@ -1,31 +1,29 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**
-!**/src/test/**
+# Gradle
+.gradle/
+**/build/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
-*.iws
+# IntelliJ
+.idea/
 *.iml
-*.ipr
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-
-### VS Code ###
+# VS Code
 .vscode/
+
+# OS / tooling
+.DS_Store
+Thumbs.db
+*.log
+
+# Node / React
+web/node_modules/
+web/dist/
+web/.vite/
+
+# Env / secrets
+.env
+.env.*
+
+# Testcontainers / local dev
+.testcontainers.properties
