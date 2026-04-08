@@ -1,0 +1,32 @@
+server:
+  port: ${PORT:8081}
+
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/smarttrip}
+    username: ${DB_USER:smarttrip}
+    password: ${DB_PASSWORD:smarttrip}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        default_schema: users
+  flyway:
+    enabled: true
+    schemas: users
+    locations: classpath:db/migration
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+
+security:
+  jwt:
+    issuer: ${JWT_ISSUER:http://localhost:8081}
+    secret: ${JWT_SECRET:dev-dev-dev-dev-dev-dev-dev-dev-dev-dev-dev-dev}
+

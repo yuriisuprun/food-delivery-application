@@ -1,0 +1,46 @@
+server:
+  port: ${PORT:8083}
+
+spring:
+  application:
+    name: ai-service
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/smarttrip}
+    username: ${DB_USER:smarttrip}
+    password: ${DB_PASSWORD:smarttrip}
+  flyway:
+    enabled: true
+    schemas: ai
+    locations: classpath:db/migration
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY:dev-placeholder}
+      chat:
+        options:
+          model: ${OPENAI_MODEL:gpt-4.1-mini}
+    vectorstore:
+      pgvector:
+        initialize-schema: true
+        schema-name: ai
+        table-name: document_embeddings
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+
+security:
+  jwt:
+    secret: ${JWT_SECRET:dev-dev-dev-dev-dev-dev-dev-dev-dev-dev-dev-dev}
+
+ai:
+  prompts:
+    itinerary:
+      system: |
+        Sei un travel planner esperto. Genera un itinerario realistico e ottimizzato.
+        Regole:
+        - Rispetta budget, tempi, logistica, orari plausibili e spostamenti.
+        - Fornisci un piano giorno-per-giorno con fasce orarie.
+        - Includi stime costi (trasporti, cibo, attrazioni) e alternative low-cost.
+        - Evidenzia assunzioni e cosa manca per migliorare l’output.

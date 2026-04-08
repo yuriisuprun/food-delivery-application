@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-service
+  namespace: smarttrip
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ai-service
+  template:
+    metadata:
+      labels:
+        app: ai-service
+    spec:
+      containers:
+        - name: ai-service
+          image: ghcr.io/REPLACE_ME/ai-service:latest
+          ports:
+            - containerPort: 8083
+          env:
+            - name: PORT
+              value: "8083"
+            - name: DB_URL
+              valueFrom: { configMapKeyRef: { name: smarttrip-config, key: DB_URL } }
+            - name: DB_USER
+              valueFrom: { configMapKeyRef: { name: smarttrip-config, key: DB_USER } }
+            - name: DB_PASSWORD
+              valueFrom: { secretKeyRef: { name: smarttrip-secrets, key: DB_PASSWORD } }
+            - name: JWT_SECRET
+              valueFrom: { secretKeyRef: { name: smarttrip-secrets, key: JWT_SECRET } }
+            - name: OPENAI_API_KEY
+              valueFrom: { secretKeyRef: { name: smarttrip-secrets, key: OPENAI_API_KEY } }
+          readinessProbe:
+            httpGet: { path: /api/health, port: 8083 }
+            initialDelaySeconds: 10
+          livenessProbe:
+            httpGet: { path: /api/health, port: 8083 }
+            initialDelaySeconds: 20
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-service
+  namespace: smarttrip
+spec:
+  selector:
+    app: ai-service
+  ports:
+    - name: http
+      port: 8083
+      targetPort: 8083
+
