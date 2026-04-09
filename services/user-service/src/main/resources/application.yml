@@ -16,6 +16,7 @@ spring:
         default_schema: users
   flyway:
     enabled: true
+    create-schemas: true
     schemas: users
     locations: classpath:db/migration
 
@@ -29,4 +30,3 @@ security:
   jwt:
     issuer: ${JWT_ISSUER:http://localhost:8081}
     secret: ${JWT_SECRET:dev-dev-dev-dev-dev-dev-dev-dev-dev-dev-dev-dev}
-

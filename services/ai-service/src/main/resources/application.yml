@@ -10,6 +10,7 @@ spring:
     password: ${DB_PASSWORD:smarttrip}
   flyway:
     enabled: true
+    create-schemas: true
     schemas: ai
     locations: classpath:db/migration
   ai:
