@@ -4,7 +4,6 @@ services:
   postgres:
     image: pgvector/pgvector:pg16
     environment:
-      # Use official image bootstrap: creates DB + superuser role on first init.
       POSTGRES_USER: smarttrip
       POSTGRES_PASSWORD: smarttrip
       POSTGRES_DB: smarttrip
@@ -49,6 +48,7 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+    restart: unless-stopped
 
   trip-service:
     build:
@@ -70,6 +70,7 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+    restart: unless-stopped
 
   ai-service:
     build:
@@ -88,6 +89,7 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+    restart: unless-stopped
 
   recommendation-service:
     build:
@@ -108,6 +110,7 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+    restart: unless-stopped
 
 volumes:
   postgres_data:
