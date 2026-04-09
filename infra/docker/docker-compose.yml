@@ -4,13 +4,21 @@ services:
   postgres:
     image: pgvector/pgvector:pg16
     environment:
-      POSTGRES_PASSWORD: postgres
+      # Use official image bootstrap: creates DB + superuser role on first init.
+      POSTGRES_USER: smarttrip
+      POSTGRES_PASSWORD: smarttrip
+      POSTGRES_DB: smarttrip
       POSTGRES_INITDB_ARGS: "--encoding=UTF8"
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U smarttrip -d smarttrip"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
 
   redis:
     image: redis:7-alpine
@@ -19,6 +27,11 @@ services:
     command: ["redis-server", "--appendonly", "yes"]
     volumes:
       - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
 
   user-service:
     build:
@@ -34,7 +47,8 @@ services:
     ports:
       - "8081:8081"
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
 
   trip-service:
     build:
@@ -52,8 +66,10 @@ services:
     ports:
       - "8082:8082"
     depends_on:
-      - postgres
-      - redis
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
 
   ai-service:
     build:
@@ -70,7 +86,8 @@ services:
     ports:
       - "8083:8083"
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
 
   recommendation-service:
     build:
@@ -87,8 +104,10 @@ services:
     ports:
       - "8084:8084"
     depends_on:
-      - postgres
-      - redis
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
 
 volumes:
   postgres_data:
