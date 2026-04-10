@@ -9,4 +9,3 @@ public class TripServiceApplication {
         SpringApplication.run(TripServiceApplication.class, args);
     }
 }
-
