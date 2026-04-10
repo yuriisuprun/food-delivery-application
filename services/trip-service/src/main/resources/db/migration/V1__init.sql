@@ -1,12 +1,12 @@
-create schema if not exists trips;
+CREATE SCHEMA IF NOT EXISTS trips;
 
-create table if not exists trips.trip (
-  id uuid primary key,
-  user_email text not null,
-  destination text not null,
-  days int not null,
-  budget_eur int not null,
-  constraints_json jsonb not null default '[]'::jsonb,
-  itinerary_markdown text,
-  created_at timestamptz not null default now()
+CREATE TABLE IF NOT EXISTS trips.trip (
+      id UUID PRIMARY KEY,
+      user_email TEXT NOT NULL,
+      destination TEXT NOT NULL,
+      days INT NOT NULL,
+      budget_eur INT NOT NULL,
+      constraints_json JSONB NOT NULL DEFAULT '[]'::jsonb,
+      itinerary_markdown TEXT,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
