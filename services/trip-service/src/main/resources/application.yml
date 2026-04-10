@@ -4,24 +4,32 @@ server:
 spring:
   application:
     name: trip-service
+
   datasource:
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/smarttrip}
+    url: ${DB_URL:jdbc:postgresql://postgres:5432/smarttrip}
     username: ${DB_USER:smarttrip}
     password: ${DB_PASSWORD:smarttrip}
+    driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: none
     properties:
       hibernate:
         default_schema: trips
+        format_sql: true
+
   flyway:
     enabled: true
     create-schemas: true
     schemas: trips
+    default-schema: trips
     locations: classpath:db/migration
+    baseline-on-migrate: true
+
   data:
     redis:
-      host: ${REDIS_HOST:localhost}
+      host: ${REDIS_HOST:redis}
       port: ${REDIS_PORT:6379}
 
 management:
