@@ -6,13 +6,13 @@ spring:
     name: user-service
 
   datasource:
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/smarttrip}
+    url: ${DB_URL:jdbc:postgresql://postgres:5432/smarttrip}
     username: ${DB_USER:smarttrip}
     password: ${DB_PASSWORD:smarttrip}
 
   jpa:
     hibernate:
-      ddl-auto: validate   # keep this (correct for Flyway setup)
+      ddl-auto: none   # ✅ IMPORTANT FIX (Flyway owns schema)
     properties:
       hibernate:
         default_schema: users
@@ -20,10 +20,10 @@ spring:
 
   flyway:
     enabled: true
-    create-schemas: true
-    default-schema: users
-    schemas: users
     locations: classpath:db/migration
+    schemas: users
+    default-schema: users
+    create-schemas: true
     baseline-on-migrate: true
 
 management:
