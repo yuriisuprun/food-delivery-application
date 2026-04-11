@@ -1,28 +1,21 @@
 # AI Layer
 
 ## Prompt engineering (itinerary)
+System prompt (current in ai-service):
+- realistic planning
+- constraints (time/budget/logistics)
+- cost estimates and low-cost alternatives
+- assumptions + missing information requested from the user
 
-Prompt di sistema (attuale in `ai-service`):
-
-- pianificazione realistica
-- vincoli (tempo/budget/logistica)
-- stime costi e alternative low-cost
-- assunzioni + missing info richieste all’utente
-
-## RAG: luoghi + travel data
-
+## RAG: places + travel data
 Target sources (MVP):
-
-- dataset luoghi (POI, descrizioni, categorie)
-- note pratiche (orari, stagionalità, costi indicativi)
-- trasporti (linee, tempi medi, pass turistici)
+- places dataset (POIs, descriptions, categories)
+- practical notes (opening hours, seasonality, indicative costs)
+- transport (lines, average times, tourist passes)
 
 Storage:
+- pgvector in Postgres (table ai.document_embeddings)
 
-- pgvector in Postgres (tabella `ai.document_embeddings`)
-
-## Tooling (futuro)
-
-- Tool calling: lookup meteo, trasporti, booking, map routing
-- Guardrail: validation output (schema), safety filters, dedup
-
+## Tooling (future)
+- Tool calling: weather lookup, transport, booking, map routing
+- Guardrails: output validation (schema), safety filters, deduplication  
