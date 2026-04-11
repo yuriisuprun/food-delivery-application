@@ -15,6 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
+
     @Bean
     SecretKey jwtSecretKey(@Value("${security.jwt.secret}") String secret) {
         byte[] bytes = secret.getBytes(java.nio.charset.StandardCharsets.UTF_8);
