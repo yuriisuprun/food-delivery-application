@@ -23,8 +23,8 @@ public class ItineraryController {
     private final String openAiApiKey;
 
     public ItineraryController(ChatClient.Builder chatClientBuilder, VectorStore vectorStore,
-                              @Value("${ai.prompts.itinerary.system}") String systemPrompt,
-                              @Value("${spring.ai.openai.api-key:}") String openAiApiKey) {
+                               @Value("${ai.prompts.itinerary.system}") String systemPrompt,
+                               @Value("${spring.ai.openai.api-key:}") String openAiApiKey) {
         this.chatClient = chatClientBuilder.build();
         this.vectorStore = vectorStore;
         this.systemPrompt = systemPrompt;
@@ -32,10 +32,10 @@ public class ItineraryController {
     }
 
     public record ItineraryRequest(
-        @NotBlank String destination,
-        @NotNull @PositiveOrZero Integer days,
-        @NotNull @PositiveOrZero Integer budgetEur,
-        List<String> constraints
+            @NotBlank String destination,
+            @NotNull @PositiveOrZero Integer days,
+            @NotNull @PositiveOrZero Integer budgetEur,
+            List<String> constraints
     ) {}
 
     public record ItineraryResponse(String markdown) {}
@@ -44,15 +44,15 @@ public class ItineraryController {
     public ItineraryResponse itinerary(@RequestBody ItineraryRequest req) {
         if (openAiApiKey == null || openAiApiKey.isBlank() || "dev-placeholder".equals(openAiApiKey)) {
             return new ItineraryResponse("""
-                OPENAI_API_KEY non configurata: impostala e riprova.
+                OPENAI_API_KEY not configured: set it and try again.
 
-                Richiesta ricevuta:
-                - destinazione: %s
-                - giorni: %s
+                Request received:
+                - destination: %s
+                - days: %s
                 - budget: %s EUR
-                - vincoli: %s
+                - constraints: %s
 
-                Nota: la pipeline RAG e il prompt sono presenti, ma senza un provider LLM non posso generare l’itinerario.
+                Note: the RAG pipeline and prompt are present, but without an LLM provider I cannot generate the itinerary.
                 """.formatted(req.destination(), req.days(), req.budgetEur(), req.constraints()));
         }
 
@@ -61,16 +61,16 @@ public class ItineraryController {
         List<Document> contextDocs = vectorStore.similaritySearch(searchRequest);
 
         var context = contextDocs.stream()
-            .map(d -> "- " + d.getText())
-            .reduce("", (a, b) -> a + "\n" + b);
+                .map(d -> "- " + d.getText())
+                .reduce("", (a, b) -> a + "\n" + b);
 
         var user = """
-            Destinazione: %s
-            Giorni: %s
+            Destination: %s
+            Days: %s
             Budget (EUR): %s
-            Vincoli: %s
+            Constraints: %s
 
-            Contesto (RAG):
+            Context (RAG):
             %s
             """.formatted(req.destination(), req.days(), req.budgetEur(), req.constraints(), context);
 
