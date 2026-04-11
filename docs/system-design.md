@@ -1,10 +1,9 @@
-# System Design (MVP)
+**Goal:**  
+Plan trips with practical and actionable output (time, budget, logistics constraints) with an AI layer that reduces hallucinations using RAG on travel data (places + travel data).
 
-## Overview
+---
 
-Obiettivo: pianificare viaggi con output pratico e attuabile (vincoli di tempo, budget, logistica) con un layer AI che riduca hallucinations usando RAG su dati di viaggio (luoghi + travel data).
-
-## Microservizi
+## Microservices
 
 ```mermaid
 flowchart LR
@@ -18,30 +17,61 @@ flowchart LR
   REC --> PG
   TRIP --> REDIS[(Redis)]
   REC --> REDIS
-```
+Data Layer
+Postgres
+Main database
+Separate schemas per service:
+users
+trips
+recommendations
+ai
+pgvector
+Embedding storage for retrieval
+Enables similarity search in RAG pipeline
+Redis
+Caching layer:
+Suggestions
+Fast lookups
+Future: rate limiting
+AI Layer (RAG)
+Logical Pipeline
+Ingest
+Normalization and chunking of travel data:
+Places
+Descriptions
+Tips
+Opening hours
+Pricing
+Embedding
+Vector creation
+Storage in pgvector
+Retrieval
+Similarity search for:
+Destination
+Constraints
+Generation
+Prompt = context + user request
+Output:
+Structured Markdown
+Day-by-day itinerary
+Real Constraints (Optimization Model)
+MVP
+AI-guided generation
+Includes heuristics
+Next Step (Deterministic Solver)
 
-## Data
+Introduce constraint-based optimization (e.g. constraint programming / MILP):
 
-- Postgres: DB principale, schemi separati per servizio (`users`, `trips`, `recommendations`, `ai`).
-- pgvector: storage embeddings per retrieval.
-- Redis: caching (es. suggerimenti, lookup rapidi, rate limiting futuro).
-
-## AI Layer (RAG)
-
-Pipeline logica:
-
-1. Ingest: normalizzazione e chunking di travel data (luoghi, descrizioni, consigli, orari, pricing).
-2. Embedding: creazione vettori e salvataggio in pgvector.
-3. Retrieval: similarity search per la destinazione e i vincoli.
-4. Generation: prompt con contesto + richiesta utente, output in markdown strutturato giorno-per-giorno.
-
-## Vincoli reali (modello di ottimizzazione)
-
-MVP: la generazione è AI-guidata e include euristiche.
-Step successivo: introdurre un solver deterministico (es. constraint programming / MILP) per:
-
-- finestre orarie (opening hours)
-- tempi di trasporto reali (routing provider)
-- budget per categorie (food/transport/attractions)
-- preferenze e penalità (crowds, pace, walking)
-
+Time windows
+Respect opening hours
+Transport
+Real transport times (routing provider)
+Budget
+By category:
+Food
+Transport
+Attractions
+Preferences & Penalties
+Crowds
+Pace
+Walking distance
