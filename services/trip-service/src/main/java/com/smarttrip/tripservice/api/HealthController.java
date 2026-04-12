@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HealthController {
+
     @GetMapping("/api/health")
     public HealthDto health() {
         return new HealthDto("trip-service", Instant.now(), "UP");
