@@ -1,4 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router";
+import { ThemeProvider } from "./lib/theme";
 import { RootLayout } from "./layout/RootLayout";
 import { HomePage } from "./pages/HomePage";
 import { LoginPage } from "./pages/LoginPage";
@@ -17,6 +18,9 @@ const router = createBrowserRouter([
 ]);
 
 export function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  );
 }
-
