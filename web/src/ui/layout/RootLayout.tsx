@@ -1,3 +1,4 @@
+import React from "react";
 import { Link, Outlet, useNavigate } from "react-router";
 import { getToken, logout } from "../lib/auth";
 import { useTheme } from "../lib/theme";
@@ -8,9 +9,24 @@ export function RootLayout() {
   const token = getToken();
   const { theme, toggleTheme } = useTheme();
 
+  // FIX: Move style object outside JSX
+  const headerStyle = {
+    backgroundColor:
+      theme === "light"
+        ? "rgba(248, 250, 252, 0.8)" // Very light gray with high transparency
+        : "rgba(7, 10, 18, 0.75)",   // Dark theme background
+    boxShadow:
+      theme === "light"
+        ? "0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06)"
+        : "none",
+  };
+
   return (
     <div className="min-h-screen">
-      <header className="sticky top-0 z-20 border-b border-[color:var(--line)] bg-[rgba(7,10,18,0.75)] backdrop-blur dark:bg-[rgba(7,10,18,0.75)] light:bg-white/80">
+      <header
+        className="sticky top-0 z-20 border-b border-[color:var(--line)] backdrop-blur transition-all duration-300"
+        style={headerStyle}
+      >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
           <Link to="/" className="flex items-baseline gap-2">
             <div className="brand text-xl tracking-tight">SmartTrip</div>
