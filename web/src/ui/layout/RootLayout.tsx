@@ -32,21 +32,31 @@ export function RootLayout() {
             </button>
             <Link
               to="/planner"
-              className="rounded-full border border-[color:var(--line)] px-4 py-2 hover:bg-white/5 dark:hover:bg-white/5 light:hover:bg-black/5"
+              className="rounded-full border border-[color:var(--line)] px-4 py-2 transition-colors"
+              style={{
+                backgroundColor: theme === 'light' ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.05)',
+              }}
             >
               Planner
             </Link>
             {!token ? (
               <Link
                 to="/login"
-                className="rounded-full bg-[color:var(--accent)] px-4 py-2 font-medium text-black hover:brightness-95"
+                className="rounded-full px-4 py-2 font-medium transition-opacity"
+                style={{
+                  backgroundColor: 'var(--accent)',
+                  color: '#000',
+                }}
               >
                 Login
               </Link>
             ) : (
               <button
                 type="button"
-                className="rounded-full border border-[color:var(--line)] px-4 py-2 hover:bg-white/5 dark:hover:bg-white/5 light:hover:bg-black/5"
+                className="rounded-full border border-[color:var(--line)] px-4 py-2 transition-colors"
+                style={{
+                  backgroundColor: theme === 'light' ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.05)',
+                }}
                 onClick={() => {
                   logout();
                   nav("/");
