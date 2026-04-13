@@ -7,9 +7,7 @@ export function PlannerPage() {
   const [budgetEur, setBudgetEur] = useState(450);
   const [markdown, setMarkdown] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
-  const [trips, setTrips] = useState<
-    Array<{ id: string; destination: string; days: number; budgetEur: number; itineraryMarkdown: string | null }>
-  >([]);
+  const [trips, setTrips] = useState<Array<{ id: string; destination: string; days: number; budgetEur: number; itineraryMarkdown: string | null }>>([]);
 
   return (
     <div className="grid gap-6">
