@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { setToken } from "../lib/auth";
 import { userApi } from "../lib/http";
@@ -68,4 +68,3 @@ export function LoginPage() {
     </div>
   );
 }
-

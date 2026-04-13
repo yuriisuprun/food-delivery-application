@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router";
 
 export function HomePage() {
@@ -46,4 +47,3 @@ function Card(props: { title: string; body: string }) {
     </div>
   );
 }
-

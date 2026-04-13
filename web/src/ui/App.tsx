@@ -1,3 +1,4 @@
+import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router";
 import { ThemeProvider } from "./lib/theme";
 import { RootLayout } from "./layout/RootLayout";
