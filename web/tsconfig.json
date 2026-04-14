@@ -3,12 +3,12 @@
     "target": "ES2022",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "moduleResolution": "bundler",
     "jsx": "react",
     "strict": true,
     "skipLibCheck": true,
     "noEmit": true,
     "types": ["vite/client"]
   },
-  "include": ["src"]
+  "include": ["src", "tailwind.config.ts"]
 }

@@ -29,6 +29,10 @@ html.dark {
 html,
 body {
   height: 100%;
+  width: 100%;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 body {
@@ -37,6 +41,13 @@ body {
   color: var(--fg0);
   background: linear-gradient(180deg, var(--bg0), var(--bg1));
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 16px;
+  }
 }
 
 html.dark body {
