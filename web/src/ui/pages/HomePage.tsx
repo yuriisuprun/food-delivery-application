@@ -7,10 +7,10 @@ export function HomePage() {
       <section className="grid gap-6 rounded-3xl border border-[color:var(--line)] bg-white/5 p-8">
         <div className="grid gap-3">
           <h1 className="brand text-4xl leading-tight">
-            Pianificazione viaggi AI-driven, con vincoli reali.
+            AI-driven trip planning with real constraints.
           </h1>
           <p className="max-w-2xl text-[color:var(--fg1)]">
-            Itinerari ottimizzati su tempo, budget e logistica. Suggerimenti, alternative low-cost, e spiegazione delle assunzioni.
+            Itineraries optimized for time, budget and logistics. Suggestions, low-cost alternatives, and explanation of assumptions.
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-3">
@@ -18,22 +18,22 @@ export function HomePage() {
             to="/planner"
             className="rounded-full bg-[color:var(--accent)] px-6 py-3 font-medium text-black hover:brightness-95"
           >
-            Crea itinerario
+            Create itinerary
           </Link>
           <a
             className="rounded-full border border-[color:var(--line)] px-6 py-3 hover:bg-white/5"
             href="/"
             onClick={(e) => e.preventDefault()}
           >
-            Vedi system design
+            View system design
           </a>
         </div>
       </section>
 
       <section className="grid gap-4 md:grid-cols-3">
-        <Card title="Vincoli reali" body="Orari plausibili, spostamenti, pause, tempi di trasporto e buffer." />
-        <Card title="Budget" body="Stime costi e consigli pratici per risparmiare senza degradare l’esperienza." />
-        <Card title="RAG" body="Arricchimento con dati su luoghi e travel data, per ridurre allucinazioni e migliorare il contesto." />
+        <Card title="Real constraints" body="Plausible schedules, movements, breaks, transport times and buffers." />
+        <Card title="Budget" body="Cost estimates and practical tips to save without degrading the experience." />
+        <Card title="RAG" body="Enrichment with data on places and travel data, to reduce hallucinations and improve context." />
       </section>
     </div>
   );

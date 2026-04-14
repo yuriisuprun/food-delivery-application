@@ -1,37 +1,37 @@
 # SmartTrip Application (Skeleton)
 
-Sistema di pianificazione viaggi AI-driven che ottimizza itinerari considerando vincoli reali (tempo, budget, logistica).
+AI-driven trip planning system that optimizes itineraries considering real constraints (time, budget, logistics).
 
-## Architettura
+## Architecture
 
-Monorepo con microservizi Spring Boot (Java 21, Gradle):
+Monorepo with Spring Boot microservices (Java 21, Gradle):
 
-- `services/user-service` autenticazione (skeleton JWT HS256) e gestione utenti
-- `services/trip-service` gestione viaggi/itinerari (placeholder)
-- `services/ai-service` AI layer: prompt + RAG (pgvector) + generazione itinerario
-- `services/recommendation-service` suggerimenti e raccomandazioni (placeholder)
+- `services/user-service` authentication (skeleton JWT HS256) and user management
+- `services/trip-service` trip/itinerary management (placeholder)
+- `services/ai-service` AI layer: prompt + RAG (pgvector) + itinerary generation
+- `services/recommendation-service` suggestions and recommendations (placeholder)
 
 Frontend:
 
-- `web` React (Vite) con UI moderna e una pagina Planner che chiama `ai-service`
+- `web` React (Vite) with modern UI and a Planner page that calls `ai-service`
 
-Infrastruttura:
+Infrastructure:
 
-- `infra/docker` docker-compose (Postgres + pgvector, Redis, microservizi)
-- `infra/k8s` manifest Kubernetes (base)
-- `.github/workflows/ci.yml` CI per backend + frontend
+- `infra/docker` docker-compose (Postgres + pgvector, Redis, microservices)
+- `infra/k8s` Kubernetes manifests (base)
+- `.github/workflows/ci.yml` CI for backend + frontend
 
-## Quickstart (locale)
+## Quickstart (local)
 
-Prerequisiti: Docker, Java 21, Node (consigliato 22), Gradle wrapper.
+Prerequisites: Docker, Java 21, Node (recommended 22), Gradle wrapper.
 
-1. Avvia DB/Redis e servizi:
+1. Start DB/Redis and services:
 
 ```powershell
 docker compose -f infra/docker/docker-compose.yml up --build
 ```
 
-2. Avvia il frontend:
+2. Start the frontend:
 
 ```powershell
 cd web
@@ -39,18 +39,17 @@ npm install
 npm run dev
 ```
 
-3. Endpoints rapidi:
+3. Quick endpoints:
 
 - `user-service`: `GET http://localhost:8081/api/health`
 - `trip-service`: `GET http://localhost:8082/api/health`
 - `ai-service`: `GET http://localhost:8083/api/health`
 - `recommendation-service`: `GET http://localhost:8084/api/health`
 
-Nota: per ottenere output reale da `ai-service`, imposta `OPENAI_API_KEY` (env var nel compose).
+Note: to get real output from `ai-service`, set `OPENAI_API_KEY` (env var in compose).
 
 ## Deploy
 
-- Render: vedi `[infra/render/render.yaml](/C:/Users/yurii/MyProjects/smart-trip-application/infra/render/render.yaml)` (skeleton).
-- Vercel: vedi `[web/vercel.json](/C:/Users/yurii/MyProjects/smart-trip-application/web/vercel.json)`.
-- Kubernetes: vedi cartella `[infra/k8s](/C:/Users/yurii/MyProjects/smart-trip-application/infra/k8s)`.
-
+- Render: see `[infra/render/render.yaml](/C:/Users/yurii/MyProjects/smart-trip-application/infra/render/render.yaml)` (skeleton).
+- Vercel: see `[web/vercel.json](/C:/Users/yurii/MyProjects/smart-trip-application/web/vercel.json)`.
+- Kubernetes: see folder `[infra/k8s](/C:/Users/yurii/MyProjects/smart-trip-application/infra/k8s)`.

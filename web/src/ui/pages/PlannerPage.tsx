@@ -14,19 +14,19 @@ export function PlannerPage() {
       <div className="grid gap-2">
         <h1 className="brand text-3xl">Planner</h1>
         <p className="text-sm text-[color:var(--fg1)]">
-          Chiamata a `trip-service` che inoltra la richiesta a `ai-service` e salva il trip su Postgres.
+          Call to `trip-service` that forwards the request to `ai-service` and saves the trip on Postgres.
         </p>
       </div>
 
       <div className="grid gap-4 rounded-3xl border border-[color:var(--line)] bg-white/5 p-6 md:grid-cols-3">
-        <Field label="Destinazione">
+        <Field label="Destination">
           <input
             className="w-full rounded-2xl border border-[color:var(--line)] bg-black/20 px-4 py-3 outline-none focus:border-white/25"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
           />
         </Field>
-        <Field label="Giorni">
+        <Field label="Days">
           <input
             type="number"
             min={1}
@@ -58,7 +58,7 @@ export function PlannerPage() {
                   destination,
                   days,
                   budgetEur,
-                  constraints: ["preferisci camminare", "evita spostamenti lunghi"],
+                  constraints: ["prefer walking", "avoid long moves"],
                   },
                 );
                 setMarkdown(res.itineraryMarkdown ?? "");
@@ -69,7 +69,7 @@ export function PlannerPage() {
               }
             }}
           >
-            Genera itinerario
+            Generate itinerary
           </button>
           <button
             type="button"
@@ -84,7 +84,7 @@ export function PlannerPage() {
               }
             }}
           >
-            Aggiorna lista
+            Update list
           </button>
         </div>
       </div>
@@ -96,14 +96,14 @@ export function PlannerPage() {
       ) : null}
 
       <div className="rounded-3xl border border-[color:var(--line)] bg-black/20 p-6">
-        <div className="mb-3 text-xs text-[color:var(--fg1)]">Risposta (markdown grezzo):</div>
+        <div className="mb-3 text-xs text-[color:var(--fg1)]">Response (raw markdown):</div>
         <pre className="whitespace-pre-wrap text-sm leading-relaxed">{markdown || "..."}</pre>
       </div>
 
       <div className="rounded-3xl border border-[color:var(--line)] bg-white/5 p-6">
         <div className="mb-3 text-xs text-[color:var(--fg1)]">My trips (demo):</div>
         {trips.length === 0 ? (
-          <div className="text-sm text-[color:var(--fg1)]">Nessun trip ancora.</div>
+          <div className="text-sm text-[color:var(--fg1)]">No trips yet.</div>
         ) : (
           <div className="grid gap-2">
             {trips.map((t) => (
@@ -111,7 +111,7 @@ export function PlannerPage() {
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <div className="brand text-lg">{t.destination}</div>
                   <div className="text-xs text-[color:var(--fg1)]">
-                    {t.days} giorni, {t.budgetEur} EUR
+                    {t.days} days, {t.budgetEur} EUR
                   </div>
                 </div>
               </div>
