@@ -23,7 +23,7 @@ export function RootLayout() {
       </main>
 
       <footer className="mx-auto max-w-6xl px-5 py-10 text-xs text-[color:var(--fg1)]">
-        MVP skeleton: microservizi + UI moderna + AI layer (RAG + prompt).
+        kljkjljjljl
       </footer>
     </div>
   );
