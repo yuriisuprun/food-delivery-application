@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { Moon, Sun, Menu, X, Sparkles, LogOut, User } from "lucide-react";
+import { Button } from "../components/ui/button";
 
 interface HeaderProps {
   token: string | null;
@@ -12,35 +13,35 @@ interface HeaderProps {
 export default function Header({ token, theme, toggleTheme, onLogout }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const headerStyle = {
-    backgroundColor:
-      theme === "light"
-        ? "rgba(248, 250, 252, 0.8)"
-        : "rgba(7, 10, 18, 0.75)",
-    boxShadow:
-      theme === "light"
-        ? "0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06)"
-        : "none",
-  };
-
   return (
-    <header
-      className="sticky top-0 z-20 border-b border-[color:var(--line)] backdrop-blur transition-all duration-300"
-      style={headerStyle}
-    >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-5 sm:py-4">
+    <header className="sticky top-0 z-50 border-b border-[color:var(--line)] backdrop-blur-md bg-[color:var(--bg0)]/80 transition-all duration-300">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
         {/* Logo */}
-        <Link to="/" className="flex flex-shrink-0 flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-2">
-          <div className="brand text-lg sm:text-xl tracking-tight">SmartTrip</div>
-          <div className="hidden text-xs text-[color:var(--fg1)] sm:block">AI-driven travel planning</div>
+        <Link 
+          to="/" 
+          className="flex flex-shrink-0 items-center gap-3 group transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)] focus:ring-offset-2 focus:ring-offset-[color:var(--bg0)] rounded-lg p-1 -m-1"
+          aria-label="SmartTrip - Go to homepage"
+        >
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[color:var(--accent)] to-[color:var(--accent2)] flex items-center justify-center group-hover:shadow-lg group-hover:shadow-[color:var(--accent)]/25 transition-all duration-200">
+            <Sparkles className="h-4 w-4 text-black group-hover:rotate-12 transition-transform duration-200" />
+          </div>
+          <div className="brand text-lg sm:text-xl tracking-tight font-semibold group-hover:text-[color:var(--accent)] transition-colors duration-200">
+            SmartTrip
+          </div>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-2 text-sm md:flex">
-          <button
-            type="button"
+        <nav className="hidden items-center gap-3 md:flex">
+          <Button asChild variant="ghost">
+            <Link to="/">
+              Home
+            </Link>
+          </Button>
+          
+          <Button
+            variant="ghost"
+            size="icon"
             onClick={toggleTheme}
-            className="rounded-full border border-[color:var(--line)] p-2 hover:bg-white/5 transition-colors"
             aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
           >
             {theme === "light" ? (
@@ -48,47 +49,35 @@ export default function Header({ token, theme, toggleTheme, onLogout }: HeaderPr
             ) : (
               <Sun className="h-4 w-4" />
             )}
-          </button>
-          <Link
-            to="/planner"
-            className="rounded-full border border-[color:var(--line)] px-4 py-2 transition-colors"
-            style={{
-              backgroundColor: theme === 'light' ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.05)',
-            }}
-          >
-            Planner
-          </Link>
-          {!token ? (
-            <Link
-              to="/login"
-              className="rounded-full px-4 py-2 font-medium transition-opacity"
-              style={{
-                backgroundColor: 'var(--accent)',
-                color: '#000',
-              }}
-            >
-              Login
+          </Button>
+          
+          <Button asChild variant="ghost">
+            <Link to="/planner">
+              Planner
             </Link>
+          </Button>
+          
+          {!token ? (
+            <Button asChild>
+              <Link to="/login">
+                <User className="mr-2 h-4 w-4" />
+                Login
+              </Link>
+            </Button>
           ) : (
-            <button
-              type="button"
-              className="rounded-full border border-[color:var(--line)] px-4 py-2 transition-colors"
-              style={{
-                backgroundColor: theme === 'light' ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.05)',
-              }}
-              onClick={onLogout}
-            >
+            <Button variant="outline" onClick={onLogout}>
+              <LogOut className="mr-2 h-4 w-4" />
               Logout
-            </button>
+            </Button>
           )}
         </nav>
 
         {/* Mobile Menu Button */}
         <div className="flex items-center gap-2 md:hidden">
-          <button
-            type="button"
+          <Button
+            variant="ghost"
+            size="icon"
             onClick={toggleTheme}
-            className="rounded-full border border-[color:var(--line)] p-2 hover:bg-white/5 transition-colors"
             aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
           >
             {theme === "light" ? (
@@ -96,11 +85,12 @@ export default function Header({ token, theme, toggleTheme, onLogout }: HeaderPr
             ) : (
               <Sun className="h-4 w-4" />
             )}
-          </button>
-          <button
-            type="button"
+          </Button>
+          
+          <Button
+            variant="ghost"
+            size="icon"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="rounded-full border border-[color:var(--line)] p-2 hover:bg-white/5 transition-colors"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
@@ -108,50 +98,59 @@ export default function Header({ token, theme, toggleTheme, onLogout }: HeaderPr
             ) : (
               <Menu className="h-4 w-4" />
             )}
-          </button>
+          </Button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="border-t border-[color:var(--line)] bg-inherit md:hidden">
-          <nav className="flex flex-col gap-2 px-4 py-3 text-sm">
-            <Link
-              to="/planner"
-              className="rounded-full border border-[color:var(--line)] px-4 py-2 transition-colors text-center"
-              style={{
-                backgroundColor: theme === 'light' ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.05)',
-              }}
+        <div className="border-t border-[color:var(--line)] bg-[color:var(--bg0)]/95 backdrop-blur-md md:hidden animate-slide-down">
+          <nav className="flex flex-col gap-2 px-4 py-4">
+            <Button 
+              asChild 
+              variant="ghost" 
+              className="justify-start"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Planner
-            </Link>
+              <Link to="/">
+                Home
+              </Link>
+            </Button>
+            
+            <Button 
+              asChild 
+              variant="ghost" 
+              className="justify-start"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <Link to="/planner">
+                Planner
+              </Link>
+            </Button>
+            
             {!token ? (
-              <Link
-                to="/login"
-                className="rounded-full px-4 py-2 font-medium transition-opacity text-center"
-                style={{
-                  backgroundColor: 'var(--accent)',
-                  color: '#000',
-                }}
+              <Button 
+                asChild 
+                className="justify-start"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Login
-              </Link>
+                <Link to="/login">
+                  <User className="mr-2 h-4 w-4" />
+                  Login
+                </Link>
+              </Button>
             ) : (
-              <button
-                type="button"
-                className="rounded-full border border-[color:var(--line)] px-4 py-2 transition-colors"
-                style={{
-                  backgroundColor: theme === 'light' ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.05)',
-                }}
+              <Button 
+                variant="outline" 
+                className="justify-start"
                 onClick={() => {
                   onLogout();
                   setMobileMenuOpen(false);
                 }}
               >
+                <LogOut className="mr-2 h-4 w-4" />
                 Logout
-              </button>
+              </Button>
             )}
           </nav>
         </div>
