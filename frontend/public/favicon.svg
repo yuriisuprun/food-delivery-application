@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <g fill="#0f756d">
+    <!-- Body -->
+    <rect x="6" y="10" width="20" height="10" rx="3"/>
+
+    <!-- Roof -->
+    <rect x="10" y="6" width="12" height="6" rx="2"/>
+
+    <!-- Wheels -->
+    <circle cx="10" cy="22" r="2"/>
+    <circle cx="22" cy="22" r="2"/>
+  </g>
+</svg>
