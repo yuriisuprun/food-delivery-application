@@ -17,11 +17,7 @@ export default function Header({ token, theme, toggleTheme, onLogout }: HeaderPr
     <header className="sticky top-0 z-50 border-b border-[color:var(--line)] backdrop-blur-md bg-[color:var(--bg0)]/90">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
         {/* Logo */}
-        <Link 
-          to="/" 
-          className="flex items-center gap-2 group"
-          aria-label="SmartTrip"
-        >
+        <Link to="/" className="flex items-center gap-2 group" aria-label="SmartTrip">
           <div className="w-7 h-7 rounded-lg bg-[color:var(--accent)] flex items-center justify-center shadow-sm">
             <Car className="h-4 w-4 text-white" />
           </div>
