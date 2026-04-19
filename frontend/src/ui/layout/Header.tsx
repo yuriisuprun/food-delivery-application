@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
 import { Moon, Sun, Menu, X, Car, LogOut, User } from "lucide-react";
-import { Button } from "../components/ui/button";
+import { Button } from "../components/ui";
 
 interface HeaderProps {
   token: string | null;
@@ -30,33 +30,16 @@ export default function Header({ token, theme, toggleTheme, onLogout }: HeaderPr
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-2 md:flex">
-          <Button asChild variant="ghost" size="sm">
-            <Link to="/">Home</Link>
-          </Button>
+          <Button asChild variant="ghost" size="sm"><Link to="/">Home</Link></Button>
 
-          <Button asChild variant="ghost" size="sm">
-            <Link to="/planner">Planner</Link>
-          </Button>
+          <Button asChild variant="ghost" size="sm"><Link to="/planner">Planner</Link></Button>
           
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={toggleTheme}
-            aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-          >
+          <Button variant="ghost" size="sm" onClick={toggleTheme} aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}>
             {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
           </Button>
           
-          {!token ? (
-            <Button asChild size="sm">
-              <Link to="/login">Login</Link>
-            </Button>
-          ) : (
-            <Button variant="outline" size="sm" onClick={onLogout}>
-              <LogOut className="mr-1 h-3 w-3" />
-              Logout
-            </Button>
-          )}
+          {!token ? (<Button asChild size="sm"><Link to="/login">Login</Link></Button>) : (
+            <Button variant="outline" size="sm" onClick={onLogout}><LogOut className="mr-1 h-3 w-3" />Logout</Button>)}
         </nav>
 
         {/* Mobile Menu Button */}
@@ -85,48 +68,23 @@ export default function Header({ token, theme, toggleTheme, onLogout }: HeaderPr
       {mobileMenuOpen && (
         <div className="border-t border-[color:var(--line)] bg-[color:var(--bg0)]/95 backdrop-blur-md md:hidden">
           <nav className="flex flex-col gap-1 px-4 py-3">
-            <Button 
-              asChild 
-              variant="ghost" 
-              size="sm"
-              className="justify-start"
-              onClick={() => setMobileMenuOpen(false)}
-            >
+            <Button asChild variant="ghost" size="sm" className="justify-start" onClick={() => setMobileMenuOpen(false)}>
               <Link to="/">Home</Link>
             </Button>
             
-            <Button 
-              asChild 
-              variant="ghost" 
-              size="sm"
-              className="justify-start"
-              onClick={() => setMobileMenuOpen(false)}
-            >
+            <Button asChild variant="ghost" size="sm" className="justify-start" onClick={() => setMobileMenuOpen(false)}>
               <Link to="/planner">Planner</Link>
             </Button>
             
             {!token ? (
-              <Button 
-                asChild 
-                size="sm"
-                className="justify-start"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <Link to="/login">
-                  <User className="mr-2 h-4 w-4" />
-                  Login
-                </Link>
+              <Button asChild size="sm" className="justify-start" onClick={() => setMobileMenuOpen(false)}>
+                <Link to="/login"><User className="mr-2 h-4 w-4" />Login</Link>
               </Button>
             ) : (
-              <Button 
-                variant="outline" 
-                size="sm"
-                className="justify-start"
-                onClick={() => {
+              <Button variant="outline" size="sm" className="justify-start" onClick={() => {
                   onLogout();
                   setMobileMenuOpen(false);
-                }}
-              >
+                }}>
                 <LogOut className="mr-2 h-4 w-4" />
                 Logout
               </Button>
