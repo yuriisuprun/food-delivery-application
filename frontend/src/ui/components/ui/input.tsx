@@ -7,15 +7,11 @@ export interface InputProps
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, ...props }, ref) => {
     return (
-      <input
-        type={type}
-        className={cn(
+      <input type={type} className={cn(
           "flex h-10 w-full rounded-lg border border-[color:var(--line)] bg-[color:var(--bg0)] px-3 py-2 text-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-[color:var(--fg2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:border-[color:var(--accent)] disabled:cursor-not-allowed disabled:opacity-50",
           className
-        )}
-        ref={ref}
-        {...props}
-      />
+        )} ref={ref}
+        {...props}/>
     );
   }
 );
