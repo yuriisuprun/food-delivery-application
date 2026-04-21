@@ -14,15 +14,12 @@ const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
     };
 
     return (
-      <div
-        ref={ref}
-        className={cn(
+      <div ref={ref} className={cn(
           "animate-spin rounded-full border-2 border-[color:var(--line)] border-t-[color:var(--accent)]",
           sizeClasses[size],
           className
         )}
-        {...props}
-      />
+        {...props}/>
     );
   }
 );
