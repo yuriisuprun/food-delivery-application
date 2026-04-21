@@ -23,9 +23,7 @@ export function LoadingScreen({
             <Spinner size="sm" />
             <h2 className="brand text-xl sm:text-2xl">{message}</h2>
           </div>
-          <p className="text-sm text-[color:var(--fg1)] max-w-md">
-            {submessage}
-          </p>
+          <p className="text-sm text-[color:var(--fg1)] max-w-md">{submessage}</p>
         </div>
       </div>
     </div>
