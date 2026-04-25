@@ -6,18 +6,23 @@ import Header from "./Header";
 import { Toaster } from "../components/ui/toaster";
 
 export function RootLayout() {
-  const nav = useNavigate();
+  const navigate = useNavigate();
   const token = getToken();
   const { theme, toggleTheme } = useTheme();
 
   const handleLogout = () => {
     logout();
-    nav("/");
+    navigate("/");
   };
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header token={token} theme={theme} toggleTheme={toggleTheme} onLogout={handleLogout} />
+      <Header
+        token={token}
+        theme={theme}
+        toggleTheme={toggleTheme}
+        onLogout={handleLogout}
+      />
 
       <main className="flex-1 mx-auto w-full max-w-5xl px-4 py-6 sm:px-6 sm:py-8">
         <Outlet />

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import { ArrowRight, MapPin, Car } from "lucide-react";
 import { Button } from "../components/ui/button";
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "../components/ui/card";
+import { Card } from "../components/ui/card";
 
 export function HomePage() {
   return (
@@ -84,47 +84,5 @@ export function HomePage() {
         </Card>
       </section>
     </div>
-  );
-}
-
-interface FeatureCardProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  gradient: string;
-  hoverColor: string;
-}
-
-function FeatureCard({ icon, title, description, gradient, hoverColor }: FeatureCardProps) {
-  return (
-    <Card className={`group hover:scale-[1.02] transition-all duration-300 cursor-pointer border-2 border-transparent ${hoverColor} hover:shadow-xl hover:shadow-[color:var(--accent)]/10`}>
-      <CardHeader className="pb-4">
-        <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${gradient} flex items-center justify-center text-[color:var(--accent)] mb-3 group-hover:scale-110 transition-transform duration-300 group-hover:shadow-lg`}>
-          {icon}
-        </div>
-        <CardTitle className="text-xl group-hover:text-[color:var(--accent)] transition-colors duration-200">{title}</CardTitle>
-      </CardHeader>
-      <CardContent className="pt-0">
-        <CardDescription className="leading-relaxed text-base">{description}</CardDescription>
-      </CardContent>
-    </Card>
-  );
-}
-
-interface StatCardProps {
-  number: string;
-  label: string;
-}
-
-function StatCard({ number, label }: StatCardProps) {
-  return (
-    <Card className="text-center hover:scale-105 transition-transform duration-200">
-      <CardContent className="pt-6 pb-6">
-        <div className="space-y-2">
-          <div className="brand text-2xl sm:text-3xl text-[color:var(--accent)]">{number}</div>
-          <div className="text-sm text-[color:var(--fg1)]">{label}</div>
-        </div>
-      </CardContent>
-    </Card>
   );
 }

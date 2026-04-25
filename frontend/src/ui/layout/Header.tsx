@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Link } from "react-router";
 import { Moon, Sun, Menu, X, Car, LogOut, User } from "lucide-react";
 import { Button } from "../components/ui";
+import type { Theme } from "../lib/theme";
 
 interface HeaderProps {
   token: string | null;
-  theme: 'light' | 'dark';
+  theme: Theme;
   toggleTheme: () => void;
   onLogout: () => void;
 }

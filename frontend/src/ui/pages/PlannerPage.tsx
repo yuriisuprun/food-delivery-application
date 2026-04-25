@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Calendar, DollarSign, MapPin, RefreshCw, Sparkles, Clock, Copy, Check } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import { Calendar, DollarSign, MapPin, RefreshCw, Sparkles, Copy, Check } from "lucide-react";
 import { tripApi } from "../lib/http";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
@@ -8,6 +8,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../co
 import { Badge } from "../components/ui/badge";
 import { Spinner } from "../components/ui/spinner";
 import { useToast } from "../hooks/use-toast";
+
+const DEFAULT_TRIP_CONSTRAINTS = ["prefer walking", "avoid long moves"] as const;
 
 interface Trip {
   id: string;
@@ -27,6 +29,15 @@ export function PlannerPage() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [isLoadingTrips, setIsLoadingTrips] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
+  const copyResetTimeoutRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (copyResetTimeoutRef.current !== null) {
+        window.clearTimeout(copyResetTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const handleGenerateItinerary = async () => {
     if (!destination.trim()) {
@@ -48,7 +59,7 @@ export function PlannerPage() {
           destination,
           days,
           budgetEur,
-          constraints: ["prefer walking", "avoid long moves"],
+          constraints: [...DEFAULT_TRIP_CONSTRAINTS],
         },
       );
       
@@ -83,7 +94,10 @@ export function PlannerPage() {
         description: "Your itinerary has been copied.",
       });
       
-      setTimeout(() => setIsCopied(false), 2000);
+      if (copyResetTimeoutRef.current !== null) {
+        window.clearTimeout(copyResetTimeoutRef.current);
+      }
+      copyResetTimeoutRef.current = window.setTimeout(() => setIsCopied(false), 2000);
     } catch (e) {
       toast({
         variant: "destructive",
