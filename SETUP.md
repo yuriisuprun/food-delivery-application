@@ -277,8 +277,8 @@ curl http://localhost:6333/health
 
 #### Port Already in Use
 ```bash
-# Find process using port 3000
-lsof -i :3000
+# Find process using port 3500
+lsof -i :3500
 # Kill process
 kill -9 <PID>
 ```

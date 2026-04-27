@@ -323,7 +323,7 @@ SELECT * FROM users;
 ```bash
 # Check if ports are in use
 lsof -i :8000
-lsof -i :3000
+lsof -i :3500
 lsof -i :5432
 lsof -i :6333
 
