@@ -27,7 +27,7 @@ curl -X POST http://localhost:8000/api/admin/seed-all
 
 | Service | URL | Purpose |
 |---------|-----|---------|
-| Frontend | http://localhost:3000 | Chat, Quiz, Progress |
+| Frontend | http://localhost:3500 | Chat, Quiz, Progress |
 | Backend | http://localhost:8000 | API server |
 | API Docs | http://localhost:8000/docs | Swagger UI |
 | Qdrant | http://localhost:6333 | Vector DB |

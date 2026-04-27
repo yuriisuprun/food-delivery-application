@@ -29,13 +29,13 @@ curl -X POST http://localhost:8000/api/admin/seed-all
 ```
 
 ### Step 3: Access
-- **Frontend**: http://localhost:3000
+- **Frontend**: http://localhost:3500
 - **API Docs**: http://localhost:8000/docs
 - **Database**: localhost:5432
 - **Vector DB**: http://localhost:6333
 
 ### Step 4: Start Learning
-Open http://localhost:3000 and start chatting with the AI tutor!
+Open http://localhost:3500 and start chatting with the AI tutor!
 
 ---
 
@@ -151,7 +151,7 @@ INDEX.md (complete index)
 
 | URL | Purpose |
 |-----|---------|
-| http://localhost:3000 | Frontend (chat, quiz, progress) |
+| http://localhost:3500 | Frontend (chat, quiz, progress) |
 | http://localhost:8000 | Backend API |
 | http://localhost:8000/docs | Swagger API documentation |
 | http://localhost:6333 | Qdrant vector database |
@@ -409,7 +409,7 @@ psql -U italian_user -d italian_tutor -h localhost
 
 ### Immediate (Now)
 - [ ] Run `docker-compose up -d`
-- [ ] Open http://localhost:3000
+- [ ] Open http://localhost:3500
 - [ ] Chat with the tutor
 - [ ] Take a quiz
 - [ ] View progress
@@ -448,7 +448,7 @@ Before you start, make sure you have:
 ## 🎓 Learning Path
 
 ### For Users
-1. Open http://localhost:3000
+1. Open http://localhost:3500
 2. Select a topic
 3. Chat with the tutor
 4. Take a quiz
@@ -473,7 +473,7 @@ Everything is set up and ready to go. Just:
 1. **Clone the repository**
 2. **Create .env with your OpenAI key**
 3. **Run `docker-compose up -d`**
-4. **Open http://localhost:3000**
+4. **Open http://localhost:3500**
 5. **Start learning!**
 
 ---

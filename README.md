@@ -37,7 +37,7 @@ cd italian-tutor
 docker-compose up -d
 
 # Backend will be at http://localhost:8000
-# Frontend will be at http://localhost:3000
+# Frontend will be at http://localhost:3500
 # Qdrant at http://localhost:6333
 # PostgreSQL at localhost:5432
 ```
