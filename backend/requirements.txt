@@ -12,7 +12,7 @@ qdrant-client==1.17.1
 httpx==0.26.0
 python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4
-python-multipart==0.0.6
+python-multipart==0.0.26
 aiofiles==23.2.1
 sentry-sdk==1.40.0
 pydantic-extra-types==2.5.0
