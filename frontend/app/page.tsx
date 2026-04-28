@@ -82,7 +82,7 @@ export default function Home() {
               color: '#64748b',
               margin: 0
             }}>
-              Prefettura di Milano Exam Preparation
+              Exam Preparation
             </p>
           </div>
         </div>
