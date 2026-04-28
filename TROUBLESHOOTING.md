@@ -77,22 +77,22 @@ docker-compose up -d
 
 **Error Message:**
 ```
-Error response from daemon: Ports are not available: exposing port TCP 0.0.0.0:3500 -> 0.0.0.0:0: listen tcp 0.0.0.0:3500: bind: An attempt was made to use a port in an exclusive state.
+Error response from daemon: Ports are not available: exposing port TCP 0.0.0.0:3335 -> 0.0.0.0:0: listen tcp 0.0.0.0:3335: bind: An attempt was made to use a port in an exclusive state.
 ```
 
-**Cause**: Port 3500 (or other port) is already in use
+**Cause**: Port 3335 (or other port) is already in use
 
 **Solution**:
 ```bash
-# Find process using port 3500
-lsof -i :3500
+# Find process using port 3335
+lsof -i :3335
 
 # Kill the process
 kill -9 <PID>
 
 # Or change port in docker-compose.yml
-# Change: ports: - "3500:3000"
-# To:     ports: - "3501:3000"
+# Change: ports: - "3335:3000"
+# To:     ports: - "3336:3000"
 
 # Restart services
 docker-compose up -d
@@ -210,8 +210,8 @@ docker-compose exec frontend env | grep NEXT_PUBLIC_API_URL
 # Restart frontend
 docker-compose restart frontend
 
-# Check if port 3500 is accessible
-curl http://localhost:3500
+# Check if port 3335 is accessible
+curl http://localhost:3335
 ```
 
 ---
@@ -289,7 +289,7 @@ curl http://localhost:6333/health
 psql -U italian_user -d italian_tutor -h localhost -c "SELECT 1"
 
 # 5. Check frontend is accessible
-curl http://localhost:3500
+curl http://localhost:3335
 
 # 6. Seed content
 curl -X POST http://localhost:8000/api/admin/seed-all

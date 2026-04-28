@@ -17,7 +17,7 @@ docker-compose up -d
 curl -X POST http://localhost:8000/api/admin/seed-all
 
 # 5. Open browser
-# Frontend: http://localhost:3000
+# Frontend: http://localhost:3335
 # API Docs: http://localhost:8000/docs
 ```
 
@@ -432,7 +432,7 @@ CREATE TABLE quiz_attempts (
 ## 🎓 Learning Path
 
 ### For Users
-1. Open http://localhost:3000
+1. Open http://localhost:3335
 2. Select a topic (grammar, vocabulary, etc.)
 3. Chat with the tutor
 4. Take a quiz

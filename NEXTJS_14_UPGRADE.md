@@ -137,7 +137,7 @@ docker-compose build --no-cache frontend
 ### Step 3: Verify Build
 ```bash
 docker-compose up -d
-# Check http://localhost:3500
+# Check http://localhost:3335
 ```
 
 ### Step 4: Test Application

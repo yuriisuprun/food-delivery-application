@@ -189,7 +189,7 @@ docker-compose build --no-cache frontend
 ### Immediate (Now)
 1. ✅ Rebuild Docker image: `docker-compose build --no-cache frontend`
 2. ✅ Start containers: `docker-compose up -d`
-3. ✅ Test application at http://localhost:3500
+3. ✅ Test application at http://localhost:3335
 
 ### Short Term (This Week)
 1. Monitor for any issues

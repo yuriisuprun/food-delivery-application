@@ -67,7 +67,7 @@ curl http://localhost:8000/api/health
 curl -X POST http://localhost:8000/api/admin/seed-all
 
 # Open frontend
-# http://localhost:3500
+# http://localhost:3335
 ```
 
 ---
@@ -91,7 +91,7 @@ curl -X POST http://localhost:8000/api/admin/seed-all
 1. [ ] Edit `.env` and add OpenAI API key
 2. [ ] Run `docker-compose build --no-cache`
 3. [ ] Run `docker-compose up -d`
-4. [ ] Verify services at http://localhost:3500
+4. [ ] Verify services at http://localhost:3335
 
 ### After Verification:
 1. [ ] Read QUICK_SETUP.md for detailed setup
@@ -156,7 +156,7 @@ docker-compose ps
 curl http://localhost:8000/api/health
 
 # Check frontend loads
-curl http://localhost:3500
+curl http://localhost:3335
 ```
 
 ---
@@ -260,7 +260,7 @@ docker-compose up -d
 - [ ] OPENAI_API_KEY is set in .env
 - [ ] Docker is installed
 - [ ] Docker Compose is installed
-- [ ] Port 3500 is available
+- [ ] Port 3335 is available
 - [ ] Port 8000 is available
 - [ ] Port 5432 is available
 - [ ] Port 6333 is available
@@ -274,7 +274,7 @@ All issues have been fixed. You can now:
 1. **Add your OpenAI API key** to `.env`
 2. **Build the project** with `docker-compose build --no-cache`
 3. **Start the services** with `docker-compose up -d`
-4. **Open the application** at http://localhost:3500
+4. **Open the application** at http://localhost:3335
 5. **Start learning Italian!**
 
 ---

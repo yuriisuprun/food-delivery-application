@@ -6,6 +6,10 @@ export const metadata: Metadata = {
   description: 'Context-aware AI tutoring system for Italian language exam preparation',
   keywords: ['Italian', 'Language', 'Learning', 'AI', 'Tutor', 'Exam'],
   authors: [{ name: 'Italian Tutor Team' }],
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
   openGraph: {
     title: 'Italian Language AI Tutor',
     description: 'Context-aware AI tutoring system for Italian language exam preparation',

@@ -65,7 +65,7 @@ curl http://localhost:8000/api/health
 curl -X POST http://localhost:8000/api/admin/seed-all
 
 # Open frontend
-# http://localhost:3500
+# http://localhost:3335
 ```
 
 ---
@@ -114,8 +114,8 @@ docker-compose logs frontend
 # Restart frontend
 docker-compose restart frontend
 
-# Check if port 3500 is in use
-lsof -i :3500
+# Check if port 3335 is in use
+lsof -i :3335
 ```
 
 ### Backend Won't Start?
@@ -137,7 +137,7 @@ docker-compose restart backend
 1. ✅ Add your OpenAI API key to `.env`
 2. ✅ Run `docker-compose build --no-cache`
 3. ✅ Run `docker-compose up -d`
-4. ✅ Open http://localhost:3500
+4. ✅ Open http://localhost:3335
 5. ✅ Start learning!
 
 ---

@@ -17,7 +17,7 @@ docker-compose ps
 ### Access Application
 ```bash
 # Frontend
-http://localhost:3500
+http://localhost:3335
 
 # Backend API
 http://localhost:8000
@@ -105,7 +105,7 @@ docker-compose up -d
 curl http://localhost:8000/api/health
 
 # Check frontend is running
-curl http://localhost:3500
+curl http://localhost:3335
 
 # Check API documentation
 curl http://localhost:8000/docs
@@ -302,7 +302,7 @@ docker-compose build --no-cache
 docker-compose up -d
 
 # Verify
-curl http://localhost:3500
+curl http://localhost:3335
 ```
 
 ### Quick Restart
@@ -324,7 +324,7 @@ docker-compose down
 docker-compose up -d
 
 # Verify
-curl http://localhost:3500
+curl http://localhost:3335
 ```
 
 ## 🚨 Emergency Commands

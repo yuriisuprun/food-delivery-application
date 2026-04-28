@@ -73,7 +73,7 @@ Open http://localhost:3500 and start chatting with the AI tutor!
 
 ### Option 1: Just Want to Use It?
 1. Follow the Quick Start above
-2. Open http://localhost:3000
+2. Open http://localhost:3335
 3. Start learning Italian!
 
 ### Option 2: Want to Understand It?
@@ -124,7 +124,7 @@ INDEX.md (complete index)
 **For Users**
 1. README.md
 2. SETUP.md
-3. Start using at http://localhost:3000
+3. Start using at http://localhost:3335
 
 **For Developers**
 1. README.md
@@ -323,7 +323,7 @@ SELECT * FROM users;
 ```bash
 # Check if ports are in use
 lsof -i :8000
-lsof -i :3500
+lsof -i :3335
 lsof -i :5432
 lsof -i :6333
 
@@ -409,7 +409,7 @@ psql -U italian_user -d italian_tutor -h localhost
 
 ### Immediate (Now)
 - [ ] Run `docker-compose up -d`
-- [ ] Open http://localhost:3500
+- [ ] Open http://localhost:3335
 - [ ] Chat with the tutor
 - [ ] Take a quiz
 - [ ] View progress
@@ -448,7 +448,7 @@ Before you start, make sure you have:
 ## 🎓 Learning Path
 
 ### For Users
-1. Open http://localhost:3500
+1. Open http://localhost:3335
 2. Select a topic
 3. Chat with the tutor
 4. Take a quiz
@@ -473,7 +473,7 @@ Everything is set up and ready to go. Just:
 1. **Clone the repository**
 2. **Create .env with your OpenAI key**
 3. **Run `docker-compose up -d`**
-4. **Open http://localhost:3500**
+4. **Open http://localhost:3335**
 5. **Start learning!**
 
 ---

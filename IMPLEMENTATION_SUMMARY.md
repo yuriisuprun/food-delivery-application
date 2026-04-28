@@ -194,7 +194,7 @@ chmod +x start.sh
 ./start.sh
 
 # 4. Open browser
-# Frontend: http://localhost:3000
+# Frontend: http://localhost:3335
 # API Docs: http://localhost:8000/docs
 ```
 

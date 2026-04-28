@@ -31,7 +31,7 @@ This will start:
 - PostgreSQL at `localhost:5432`
 - Qdrant at `localhost:6333`
 - FastAPI Backend at `http://localhost:8000`
-- Next.js Frontend at `http://localhost:3000`
+- Next.js Frontend at `http://localhost:3335`
 
 ### 4. Seed Initial Content
 
@@ -50,7 +50,7 @@ curl -X POST http://localhost:8000/api/admin/seed-all
 
 Open your browser and navigate to:
 ```
-http://localhost:3000
+http://localhost:3335
 ```
 
 ## Manual Setup (Without Docker)
@@ -133,7 +133,7 @@ NEXT_PUBLIC_API_URL=http://localhost:8000
 npm run dev
 ```
 
-Frontend will be available at `http://localhost:3000`
+Frontend will be available at `http://localhost:3335`
 
 ## API Endpoints
 
@@ -277,8 +277,8 @@ curl http://localhost:6333/health
 
 #### Port Already in Use
 ```bash
-# Find process using port 3500
-lsof -i :3500
+# Find process using port 3335
+lsof -i :3335
 # Kill process
 kill -9 <PID>
 ```
