@@ -75,10 +75,51 @@ export default function QuizInterface() {
 
   if (!currentQuestion) {
     return (
-      <div className="bg-white rounded-lg shadow-lg p-6">
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '4rem 1.5rem',
+        textAlign: 'center'
+      }}>
+        <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🎯</div>
+        <h2 style={{ 
+          fontSize: '1.25rem', 
+          fontWeight: 'bold', 
+          color: '#1e293b', 
+          marginBottom: '0.5rem',
+          margin: 0
+        }}>
+          Ready to Test Your Knowledge?
+        </h2>
+        <p style={{ 
+          color: '#64748b', 
+          marginBottom: '1.5rem', 
+          maxWidth: '28rem',
+          fontSize: '0.875rem',
+          margin: '0.5rem 0 1.5rem 0'
+        }}>
+          Challenge yourself with interactive quizzes designed to improve your Italian skills
+        </p>
         <button
           onClick={() => setCurrentQuestion(sampleQuestion)}
-          className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg"
+          style={{
+            backgroundColor: '#4f46e5',
+            color: 'white',
+            padding: '0.75rem 1.5rem',
+            borderRadius: '8px',
+            border: 'none',
+            fontWeight: '500',
+            cursor: 'pointer',
+            transition: 'background-color 0.2s'
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.backgroundColor = '#4338ca'
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.backgroundColor = '#4f46e5'
+          }}
         >
           Start Quiz
         </button>
@@ -87,23 +128,63 @@ export default function QuizInterface() {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6 max-w-2xl mx-auto">
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold mb-4">{currentQuestion.question}</h2>
+    <div style={{ 
+      maxWidth: '48rem', 
+      margin: '0 auto', 
+      padding: '1.5rem' 
+    }}>
+      <div style={{ marginBottom: '1.5rem' }}>
+        <div style={{
+          backgroundColor: '#f8fafc',
+          borderRadius: '8px',
+          padding: '1rem',
+          marginBottom: '1rem',
+          border: '1px solid #e2e8f0'
+        }}>
+          <h2 style={{ 
+            fontSize: '1.125rem', 
+            fontWeight: '600', 
+            color: '#1e293b',
+            margin: 0
+          }}>
+            {currentQuestion.question}
+          </h2>
+        </div>
 
         {currentQuestion.type === 'multiple_choice' ? (
-          <div className="space-y-2">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             {currentQuestion.options?.map((option, idx) => (
-              <label key={idx} className="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer">
+              <label 
+                key={idx} 
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  padding: '0.75rem',
+                  border: '1px solid #e2e8f0',
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  transition: 'background-color 0.2s',
+                  backgroundColor: 'white'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.backgroundColor = '#f8fafc'
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.backgroundColor = 'white'
+                }}
+              >
                 <input
                   type="radio"
                   name="answer"
                   value={option}
                   checked={userAnswer === option}
                   onChange={(e) => setUserAnswer(e.target.value)}
-                  className="mr-3"
+                  style={{ 
+                    marginRight: '0.75rem',
+                    accentColor: '#4f46e5'
+                  }}
                 />
-                <span>{option}</span>
+                <span style={{ color: '#1e293b' }}>{option}</span>
               </label>
             ))}
           </div>
@@ -112,8 +193,25 @@ export default function QuizInterface() {
             value={userAnswer}
             onChange={(e) => setUserAnswer(e.target.value)}
             placeholder="Write your answer here..."
-            className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             rows={4}
+            style={{
+              width: '100%',
+              padding: '0.75rem',
+              border: '1px solid #d1d5db',
+              borderRadius: '8px',
+              outline: 'none',
+              fontSize: '0.875rem',
+              fontFamily: 'inherit',
+              resize: 'vertical'
+            }}
+            onFocus={(e) => {
+              e.target.style.borderColor = '#4f46e5'
+              e.target.style.boxShadow = '0 0 0 3px rgba(79, 70, 229, 0.1)'
+            }}
+            onBlur={(e) => {
+              e.target.style.borderColor = '#d1d5db'
+              e.target.style.boxShadow = 'none'
+            }}
           />
         )}
       </div>
@@ -122,11 +220,35 @@ export default function QuizInterface() {
         <button
           onClick={handleSubmitAnswer}
           disabled={!userAnswer.trim() || isEvaluating}
-          className="w-full bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 text-white py-2 rounded-lg flex items-center justify-center gap-2"
+          style={{
+            width: '100%',
+            backgroundColor: !userAnswer.trim() || isEvaluating ? '#9ca3af' : '#4f46e5',
+            color: 'white',
+            padding: '0.75rem',
+            borderRadius: '8px',
+            border: 'none',
+            fontWeight: '500',
+            cursor: !userAnswer.trim() || isEvaluating ? 'not-allowed' : 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '0.5rem',
+            transition: 'background-color 0.2s'
+          }}
+          onMouseOver={(e) => {
+            if (userAnswer.trim() && !isEvaluating) {
+              e.currentTarget.style.backgroundColor = '#4338ca'
+            }
+          }}
+          onMouseOut={(e) => {
+            if (userAnswer.trim() && !isEvaluating) {
+              e.currentTarget.style.backgroundColor = '#4f46e5'
+            }
+          }}
         >
           {isEvaluating ? (
             <>
-              <Loader className="w-4 h-4 animate-spin" />
+              <Loader style={{ width: '16px', height: '16px' }} className="animate-spin" />
               Evaluating...
             </>
           ) : (
@@ -134,45 +256,110 @@ export default function QuizInterface() {
           )}
         </button>
       ) : evaluation ? (
-        <div className="space-y-4">
-          <div className={`p-4 rounded-lg flex items-center gap-2 ${
-            evaluation.is_correct ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'
-          }`}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div style={{
+            padding: '1rem',
+            borderRadius: '8px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            backgroundColor: evaluation.is_correct ? '#f0fdf4' : '#fef2f2',
+            color: evaluation.is_correct ? '#166534' : '#dc2626',
+            border: `1px solid ${evaluation.is_correct ? '#bbf7d0' : '#fecaca'}`
+          }}>
             {evaluation.is_correct ? (
-              <CheckCircle className="w-6 h-6" />
+              <CheckCircle style={{ width: '24px', height: '24px' }} />
             ) : (
-              <XCircle className="w-6 h-6" />
+              <XCircle style={{ width: '24px', height: '24px' }} />
             )}
             <div>
-              <p className="font-semibold">
+              <p style={{ fontWeight: '600', margin: 0 }}>
                 {evaluation.is_correct ? 'Correct!' : 'Not quite right'}
               </p>
-              <p className="text-sm">Score: {evaluation.score}/10</p>
+              <p style={{ fontSize: '0.875rem', margin: 0 }}>
+                Score: {evaluation.score}/10
+              </p>
             </div>
           </div>
 
-          <div className="bg-blue-50 p-4 rounded-lg">
-            <h3 className="font-semibold mb-2">Explanation</h3>
-            <p className="text-sm text-gray-700">{evaluation.explanation}</p>
+          <div style={{
+            backgroundColor: '#eff6ff',
+            padding: '1rem',
+            borderRadius: '8px',
+            border: '1px solid #bfdbfe'
+          }}>
+            <h3 style={{ 
+              fontWeight: '600', 
+              marginBottom: '0.5rem', 
+              color: '#1e40af',
+              margin: '0 0 0.5rem 0'
+            }}>
+              Explanation
+            </h3>
+            <p style={{ 
+              fontSize: '0.875rem', 
+              color: '#1e40af',
+              margin: 0
+            }}>
+              {evaluation.explanation}
+            </p>
           </div>
 
           {evaluation.corrections.length > 0 && (
-            <div className="bg-yellow-50 p-4 rounded-lg">
-              <h3 className="font-semibold mb-2">Corrections</h3>
-              <ul className="text-sm text-gray-700 space-y-1">
+            <div style={{
+              backgroundColor: '#fffbeb',
+              padding: '1rem',
+              borderRadius: '8px',
+              border: '1px solid #fed7aa'
+            }}>
+              <h3 style={{ 
+                fontWeight: '600', 
+                marginBottom: '0.5rem', 
+                color: '#92400e',
+                margin: '0 0 0.5rem 0'
+              }}>
+                Corrections
+              </h3>
+              <ul style={{ 
+                fontSize: '0.875rem', 
+                color: '#92400e',
+                margin: 0,
+                paddingLeft: '1rem'
+              }}>
                 {evaluation.corrections.map((correction, idx) => (
-                  <li key={idx}>• {correction}</li>
+                  <li key={idx} style={{ marginBottom: '0.25rem' }}>
+                    {correction}
+                  </li>
                 ))}
               </ul>
             </div>
           )}
 
           {evaluation.improvement_suggestions.length > 0 && (
-            <div className="bg-purple-50 p-4 rounded-lg">
-              <h3 className="font-semibold mb-2">Tips for Improvement</h3>
-              <ul className="text-sm text-gray-700 space-y-1">
+            <div style={{
+              backgroundColor: '#faf5ff',
+              padding: '1rem',
+              borderRadius: '8px',
+              border: '1px solid #e9d5ff'
+            }}>
+              <h3 style={{ 
+                fontWeight: '600', 
+                marginBottom: '0.5rem', 
+                color: '#7c2d12',
+                margin: '0 0 0.5rem 0'
+              }}>
+                Tips for Improvement
+              </h3>
+              <ul style={{ 
+                fontSize: '0.875rem', 
+                color: '#7c2d12',
+                margin: 0,
+                paddingLeft: '1rem'
+              }}>
                 {evaluation.improvement_suggestions.map((suggestion, idx) => (
-                  <li key={idx}>• {suggestion}</li>
+                  <li key={idx} style={{ marginBottom: '0.25rem' }}>
+                    {suggestion}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -180,7 +367,23 @@ export default function QuizInterface() {
 
           <button
             onClick={handleNextQuestion}
-            className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg"
+            style={{
+              width: '100%',
+              backgroundColor: '#4f46e5',
+              color: 'white',
+              padding: '0.75rem',
+              borderRadius: '8px',
+              border: 'none',
+              fontWeight: '500',
+              cursor: 'pointer',
+              transition: 'background-color 0.2s'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.backgroundColor = '#4338ca'
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = '#4f46e5'
+            }}
           >
             Next Question
           </button>

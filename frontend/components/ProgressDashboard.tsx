@@ -49,37 +49,127 @@ export default function ProgressDashboard() {
   }))
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6">
-      <div className="flex items-center gap-2 mb-6">
-        <TrendingUp className="w-6 h-6 text-blue-500" />
-        <h2 className="text-2xl font-bold">Your Progress</h2>
+    <div style={{ padding: '1.5rem' }}>
+      <div style={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        gap: '0.75rem', 
+        marginBottom: '1.5rem' 
+      }}>
+        <TrendingUp style={{ 
+          width: '24px', 
+          height: '24px', 
+          color: '#4f46e5' 
+        }} />
+        <h2 style={{ 
+          fontSize: '1.5rem', 
+          fontWeight: 'bold', 
+          color: '#1e293b',
+          margin: 0
+        }}>
+          Your Progress
+        </h2>
       </div>
 
       {skillData.length === 0 ? (
-        <p className="text-gray-500 text-center py-8">No progress data yet. Start learning!</p>
+        <div style={{ 
+          textAlign: 'center', 
+          padding: '3rem 0' 
+        }}>
+          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📊</div>
+          <h3 style={{ 
+            fontSize: '1.125rem', 
+            fontWeight: '600', 
+            color: '#1e293b', 
+            marginBottom: '0.5rem',
+            margin: 0
+          }}>
+            No Progress Data Yet
+          </h3>
+          <p style={{ 
+            color: '#64748b',
+            margin: '0.5rem 0 0 0'
+          }}>
+            Start learning with the Chat Tutor or take some quizzes to see your progress here!
+          </p>
+        </div>
       ) : (
         <>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '1rem',
+            marginBottom: '1.5rem'
+          }}>
             {skillData.map((skill) => (
-              <div key={skill.skill} className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-lg capitalize">{skill.skill}</h3>
-                <div className="mt-2 space-y-1">
-                  <p className="text-sm text-gray-600">
-                    Level: <span className="font-semibold">{skill.level}</span>
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    Score: <span className="font-semibold">{skill.score.toFixed(1)}/100</span>
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    Accuracy: <span className="font-semibold">{Math.round(skill.accuracy * 100)}%</span>
-                  </p>
+              <div 
+                key={skill.skill} 
+                style={{
+                  backgroundColor: '#f8fafc',
+                  border: '1px solid #e2e8f0',
+                  borderRadius: '8px',
+                  padding: '1rem'
+                }}
+              >
+                <h3 style={{ 
+                  fontWeight: '600', 
+                  fontSize: '1.125rem', 
+                  textTransform: 'capitalize', 
+                  color: '#1e293b',
+                  margin: '0 0 0.75rem 0'
+                }}>
+                  {skill.skill}
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <span style={{ fontSize: '0.875rem', color: '#64748b' }}>Level:</span>
+                    <span style={{ fontSize: '0.875rem', fontWeight: '500' }}>{skill.level}</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <span style={{ fontSize: '0.875rem', color: '#64748b' }}>Score:</span>
+                    <span style={{ fontSize: '0.875rem', fontWeight: '500' }}>{skill.score.toFixed(1)}/100</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <span style={{ fontSize: '0.875rem', color: '#64748b' }}>Accuracy:</span>
+                    <span style={{ fontSize: '0.875rem', fontWeight: '500' }}>{Math.round(skill.accuracy * 100)}%</span>
+                  </div>
+                  <div style={{
+                    width: '100%',
+                    backgroundColor: '#e2e8f0',
+                    borderRadius: '9999px',
+                    height: '8px',
+                    marginTop: '0.75rem'
+                  }}>
+                    <div 
+                      style={{
+                        backgroundColor: '#4f46e5',
+                        borderRadius: '9999px',
+                        height: '8px',
+                        transition: 'width 0.3s ease',
+                        width: `${Math.round(skill.accuracy * 100)}%`
+                      }}
+                    ></div>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-8">
-            <h3 className="text-lg font-semibold mb-4">Score Overview</h3>
+          <div style={{
+            backgroundColor: 'white',
+            border: '1px solid #e2e8f0',
+            borderRadius: '8px',
+            padding: '1.5rem'
+          }}>
+            <h3 style={{ 
+              fontSize: '1.125rem', 
+              fontWeight: '600', 
+              color: '#1e293b', 
+              marginBottom: '1rem',
+              margin: '0 0 1rem 0'
+            }}>
+              Score Overview
+            </h3>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={chartData}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -87,7 +177,7 @@ export default function ProgressDashboard() {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="score" fill="#3b82f6" name="Score" />
+                <Bar dataKey="score" fill="#4f46e5" name="Score" />
                 <Bar dataKey="accuracy" fill="#10b981" name="Accuracy %" />
               </BarChart>
             </ResponsiveContainer>

@@ -90,34 +90,67 @@ export default function ChatInterface() {
   }
 
   return (
-    <div className="flex flex-col h-full bg-white rounded-lg shadow-lg">
+    <div style={{ 
+      display: 'flex', 
+      flexDirection: 'column', 
+      height: '100%' 
+    }}>
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-4">
+      <div style={{ 
+        flex: 1, 
+        overflowY: 'auto', 
+        padding: '1.5rem',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1rem'
+      }}>
         {currentSession.messages.map((message) => (
           <div
             key={message.id}
-            className={`message-enter flex ${
-              message.role === 'user' ? 'justify-end' : 'justify-start'
-            }`}
+            style={{
+              display: 'flex',
+              justifyContent: message.role === 'user' ? 'flex-end' : 'flex-start'
+            }}
           >
             <div
-              className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
-                message.role === 'user'
-                  ? 'bg-blue-500 text-white rounded-br-none'
-                  : 'bg-gray-200 text-gray-900 rounded-bl-none'
-              }`}
+              style={{
+                maxWidth: '70%',
+                padding: '0.75rem 1rem',
+                borderRadius: '12px',
+                backgroundColor: message.role === 'user' ? '#4f46e5' : '#f1f5f9',
+                color: message.role === 'user' ? 'white' : '#1e293b',
+                borderBottomRightRadius: message.role === 'user' ? '4px' : '12px',
+                borderBottomLeftRadius: message.role === 'user' ? '12px' : '4px'
+              }}
             >
-              <p className="text-sm">{message.content}</p>
-              <span className="text-xs opacity-70 mt-1 block">
+              <p style={{ 
+                fontSize: '0.875rem', 
+                lineHeight: '1.4',
+                margin: 0
+              }}>
+                {message.content}
+              </p>
+              <span style={{ 
+                fontSize: '0.75rem', 
+                opacity: 0.7, 
+                marginTop: '0.25rem', 
+                display: 'block' 
+              }}>
                 {message.timestamp.toLocaleTimeString()}
               </span>
             </div>
           </div>
         ))}
         {isStreaming && (
-          <div className="flex justify-start">
-            <div className="bg-gray-200 text-gray-900 px-4 py-2 rounded-lg rounded-bl-none">
-              <Loader className="w-4 h-4 animate-spin" />
+          <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+            <div style={{
+              backgroundColor: '#f1f5f9',
+              color: '#1e293b',
+              padding: '0.75rem 1rem',
+              borderRadius: '12px',
+              borderBottomLeftRadius: '4px'
+            }}>
+              <Loader style={{ width: '16px', height: '16px' }} className="animate-spin" />
             </div>
           </div>
         )}
@@ -127,7 +160,12 @@ export default function ChatInterface() {
       {/* Input */}
       <form
         onSubmit={handleSendMessage}
-        className="border-t p-4 flex gap-2"
+        style={{
+          borderTop: '1px solid #e2e8f0',
+          padding: '1rem',
+          display: 'flex',
+          gap: '0.5rem'
+        }}
       >
         <input
           type="text"
@@ -135,14 +173,51 @@ export default function ChatInterface() {
           onChange={(e) => setInput(e.target.value)}
           placeholder="Ask your question..."
           disabled={isStreaming}
-          className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100"
+          style={{
+            flex: 1,
+            padding: '0.75rem 1rem',
+            border: '1px solid #d1d5db',
+            borderRadius: '8px',
+            outline: 'none',
+            fontSize: '0.875rem',
+            backgroundColor: isStreaming ? '#f9fafb' : 'white'
+          }}
+          onFocus={(e) => {
+            e.target.style.borderColor = '#4f46e5'
+            e.target.style.boxShadow = '0 0 0 3px rgba(79, 70, 229, 0.1)'
+          }}
+          onBlur={(e) => {
+            e.target.style.borderColor = '#d1d5db'
+            e.target.style.boxShadow = 'none'
+          }}
         />
         <button
           type="submit"
           disabled={isStreaming || !input.trim()}
-          className="bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition"
+          style={{
+            backgroundColor: isStreaming || !input.trim() ? '#9ca3af' : '#4f46e5',
+            color: 'white',
+            padding: '0.75rem 1rem',
+            borderRadius: '8px',
+            border: 'none',
+            cursor: isStreaming || !input.trim() ? 'not-allowed' : 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            transition: 'background-color 0.2s'
+          }}
+          onMouseOver={(e) => {
+            if (!isStreaming && input.trim()) {
+              e.currentTarget.style.backgroundColor = '#4338ca'
+            }
+          }}
+          onMouseOut={(e) => {
+            if (!isStreaming && input.trim()) {
+              e.currentTarget.style.backgroundColor = '#4f46e5'
+            }
+          }}
         >
-          <Send className="w-4 h-4" />
+          <Send size={16} />
         </button>
       </form>
     </div>

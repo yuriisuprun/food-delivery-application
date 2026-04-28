@@ -30,7 +30,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+      <body style={{ 
+        backgroundColor: '#f8fafc', 
+        minHeight: '100vh',
+        margin: 0,
+        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif'
+      }}>
         {children}
       </body>
     </html>

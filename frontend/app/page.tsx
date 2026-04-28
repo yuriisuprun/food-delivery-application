@@ -39,71 +39,172 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div style={{ minHeight: '100vh', backgroundColor: '#f8fafc' }}>
       {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <BookOpen className="w-8 h-8 text-blue-600" />
-            <h1 className="text-2xl font-bold text-gray-900">Italian Language AI Tutor</h1>
+      <header style={{ 
+        backgroundColor: 'white', 
+        borderBottom: '1px solid #e2e8f0',
+        padding: '1rem 0'
+      }}>
+        <div style={{ 
+          maxWidth: '1200px', 
+          margin: '0 auto', 
+          padding: '0 1.5rem',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.75rem'
+        }}>
+          <div style={{
+            width: '40px',
+            height: '40px',
+            backgroundColor: '#4f46e5',
+            borderRadius: '8px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: 'white',
+            fontWeight: 'bold',
+            fontSize: '14px'
+          }}>
+            IT
           </div>
-          <p className="text-sm text-gray-600">Prefettura di Milano Exam Preparation</p>
+          <div>
+            <h1 style={{ 
+              fontSize: '1.5rem', 
+              fontWeight: 'bold', 
+              color: '#1e293b',
+              margin: 0
+            }}>
+              Italian Language AI Tutor
+            </h1>
+            <p style={{ 
+              fontSize: '0.875rem', 
+              color: '#64748b',
+              margin: 0
+            }}>
+              Prefettura di Milano Exam Preparation
+            </p>
+          </div>
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div style={{ 
+        maxWidth: '1200px', 
+        margin: '0 auto', 
+        padding: '1.5rem'
+      }}>
         {/* Tabs */}
-        <div className="flex gap-4 mb-6">
+        <div style={{
+          display: 'flex',
+          gap: '4px',
+          marginBottom: '1.5rem',
+          backgroundColor: '#f1f5f9',
+          padding: '4px',
+          borderRadius: '8px',
+          width: 'fit-content'
+        }}>
           <button
             onClick={() => setActiveTab('chat')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition ${
-              activeTab === 'chat'
-                ? 'bg-blue-500 text-white'
-                : 'bg-white text-gray-700 hover:bg-gray-50'
-            }`}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              padding: '0.5rem 1rem',
+              borderRadius: '6px',
+              fontWeight: '500',
+              border: 'none',
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+              backgroundColor: activeTab === 'chat' ? 'white' : 'transparent',
+              color: activeTab === 'chat' ? '#4f46e5' : '#64748b',
+              boxShadow: activeTab === 'chat' ? '0 1px 2px rgba(0, 0, 0, 0.05)' : 'none'
+            }}
           >
-            <BookOpen className="w-4 h-4" />
+            <BookOpen size={16} />
             Chat Tutor
           </button>
           <button
             onClick={() => setActiveTab('quiz')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition ${
-              activeTab === 'quiz'
-                ? 'bg-blue-500 text-white'
-                : 'bg-white text-gray-700 hover:bg-gray-50'
-            }`}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              padding: '0.5rem 1rem',
+              borderRadius: '6px',
+              fontWeight: '500',
+              border: 'none',
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+              backgroundColor: activeTab === 'quiz' ? 'white' : 'transparent',
+              color: activeTab === 'quiz' ? '#4f46e5' : '#64748b',
+              boxShadow: activeTab === 'quiz' ? '0 1px 2px rgba(0, 0, 0, 0.05)' : 'none'
+            }}
           >
-            <HelpCircle className="w-4 h-4" />
+            <HelpCircle size={16} />
             Quiz
           </button>
           <button
             onClick={() => setActiveTab('progress')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition ${
-              activeTab === 'progress'
-                ? 'bg-blue-500 text-white'
-                : 'bg-white text-gray-700 hover:bg-gray-50'
-            }`}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              padding: '0.5rem 1rem',
+              borderRadius: '6px',
+              fontWeight: '500',
+              border: 'none',
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+              backgroundColor: activeTab === 'progress' ? 'white' : 'transparent',
+              color: activeTab === 'progress' ? '#4f46e5' : '#64748b',
+              boxShadow: activeTab === 'progress' ? '0 1px 2px rgba(0, 0, 0, 0.05)' : 'none'
+            }}
           >
-            <BarChart3 className="w-4 h-4" />
+            <BarChart3 size={16} />
             Progress
           </button>
         </div>
 
         {/* Quick Actions */}
         {activeTab === 'chat' && (
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-3 mb-6">
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+            gap: '0.75rem',
+            marginBottom: '1.5rem'
+          }}>
             {[
-              { topic: 'grammar', label: 'Grammar' },
-              { topic: 'vocabulary', label: 'Vocabulary' },
-              { topic: 'reading', label: 'Reading' },
-              { topic: 'listening', label: 'Listening' },
+              { topic: 'grammar', label: 'Grammar', color: '#dbeafe' },
+              { topic: 'vocabulary', label: 'Vocabulary', color: '#dcfce7' },
+              { topic: 'reading', label: 'Reading', color: '#fae8ff' },
+              { topic: 'listening', label: 'Listening', color: '#fed7aa' },
             ].map((item) => (
               <button
                 key={item.topic}
                 onClick={() => createNewSession(item.topic, 'A2')}
-                className="bg-white hover:bg-blue-50 border border-gray-200 rounded-lg p-3 text-sm font-medium text-gray-700 transition flex items-center justify-center gap-2"
+                style={{
+                  backgroundColor: item.color,
+                  border: '1px solid #e2e8f0',
+                  borderRadius: '8px',
+                  padding: '1rem',
+                  fontWeight: '500',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.5rem'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-1px)'
+                  e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)'
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)'
+                  e.currentTarget.style.boxShadow = 'none'
+                }}
               >
-                <Plus className="w-4 h-4" />
+                <Plus size={16} />
                 {item.label}
               </button>
             ))}
@@ -111,7 +212,13 @@ export default function Home() {
         )}
 
         {/* Content */}
-        <div className="bg-white rounded-lg shadow-lg p-6 min-h-[600px]">
+        <div style={{
+          backgroundColor: 'white',
+          borderRadius: '8px',
+          boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+          border: '1px solid #e2e8f0',
+          minHeight: '600px'
+        }}>
           {activeTab === 'chat' && <ChatInterface />}
           {activeTab === 'quiz' && <QuizInterface />}
           {activeTab === 'progress' && <ProgressDashboard />}
@@ -119,10 +226,32 @@ export default function Home() {
 
         {/* Session Info */}
         {currentSession && activeTab === 'chat' && (
-          <div className="mt-4 bg-white rounded-lg shadow p-4 text-sm text-gray-600">
-            <p>
-              <strong>Current Session:</strong> {currentSession.topic.toUpperCase()} • Level: {currentSession.difficulty}
-            </p>
+          <div style={{
+            marginTop: '1rem',
+            backgroundColor: '#eff6ff',
+            borderRadius: '8px',
+            border: '1px solid #bfdbfe',
+            padding: '1rem'
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem'
+            }}>
+              <div style={{
+                width: '8px',
+                height: '8px',
+                backgroundColor: '#4f46e5',
+                borderRadius: '50%'
+              }}></div>
+              <p style={{
+                fontSize: '0.875rem',
+                color: '#1e40af',
+                margin: 0
+              }}>
+                <span style={{ fontWeight: '500' }}>Current Session:</span> {currentSession.topic.toUpperCase()} • Level: {currentSession.difficulty}
+              </p>
+            </div>
           </div>
         )}
       </div>
