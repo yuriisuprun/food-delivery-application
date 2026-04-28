@@ -16,6 +16,11 @@ export default function ProgressDashboard() {
   const [skillData, setSkillData] = useState<SkillData[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     const fetchProgress = async () => {
@@ -34,12 +39,28 @@ export default function ProgressDashboard() {
     fetchProgress()
   }, [])
 
+  if (!mounted) {
+    return (
+      <div style={{ padding: '1.5rem', textAlign: 'center' }}>
+        <p style={{ color: '#6b7280' }}>Loading...</p>
+      </div>
+    )
+  }
+
   if (loading) {
-    return <div className="text-center py-8">Loading progress...</div>
+    return (
+      <div style={{ textAlign: 'center', padding: '2rem' }}>
+        Loading progress...
+      </div>
+    )
   }
 
   if (error) {
-    return <div className="text-center py-8 text-red-500">{error}</div>
+    return (
+      <div style={{ textAlign: 'center', padding: '2rem', color: '#ef4444' }}>
+        {error}
+      </div>
+    )
   }
 
   const chartData = skillData.map((skill) => ({

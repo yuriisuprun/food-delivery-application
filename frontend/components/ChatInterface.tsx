@@ -8,6 +8,7 @@ import { Send, Loader } from 'lucide-react'
 export default function ChatInterface() {
   const [input, setInput] = useState('')
   const [isStreaming, setIsStreaming] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const { currentSession, addMessage, isLoading } = useChatStore()
 
@@ -16,8 +17,14 @@ export default function ChatInterface() {
   }
 
   useEffect(() => {
-    scrollToBottom()
-  }, [currentSession?.messages])
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (mounted) {
+      scrollToBottom()
+    }
+  }, [currentSession?.messages, mounted])
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -81,10 +88,28 @@ export default function ChatInterface() {
     }
   }
 
+  if (!mounted) {
+    return (
+      <div style={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        height: '100%' 
+      }}>
+        <p style={{ color: '#6b7280' }}>Loading...</p>
+      </div>
+    )
+  }
+
   if (!currentSession) {
     return (
-      <div className="flex items-center justify-center h-full">
-        <p className="text-gray-500">Select or create a chat session to begin</p>
+      <div style={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        height: '100%' 
+      }}>
+        <p style={{ color: '#6b7280' }}>Select or create a chat session to begin</p>
       </div>
     )
   }

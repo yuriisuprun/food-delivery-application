@@ -12,9 +12,11 @@ type TabType = 'chat' | 'quiz' | 'progress'
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<TabType>('chat')
+  const [mounted, setMounted] = useState(false)
   const { currentSession, setCurrentSession } = useChatStore()
 
   useEffect(() => {
+    setMounted(true)
     // Create initial session
     if (!currentSession) {
       const newSession: ChatSession = {
@@ -36,6 +38,10 @@ export default function Home() {
     }
     setCurrentSession(newSession)
     setActiveTab('chat')
+  }
+
+  if (!mounted) {
+    return null
   }
 
   return (

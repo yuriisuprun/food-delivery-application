@@ -32,6 +32,11 @@ export default function QuizInterface() {
   const [evaluation, setEvaluation] = useState<EvaluationResult | null>(null)
   const [isEvaluating, setIsEvaluating] = useState(false)
   const [showFeedback, setShowFeedback] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const sampleQuestion: QuizQuestion = {
     id: 'q1',
@@ -71,6 +76,14 @@ export default function QuizInterface() {
     setShowFeedback(false)
     // Load next question
     setCurrentQuestion(sampleQuestion)
+  }
+
+  if (!mounted) {
+    return (
+      <div style={{ padding: '1.5rem', textAlign: 'center' }}>
+        <p style={{ color: '#6b7280' }}>Loading...</p>
+      </div>
+    )
   }
 
   if (!currentQuestion) {
