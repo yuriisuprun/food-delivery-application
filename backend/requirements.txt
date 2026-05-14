@@ -6,7 +6,7 @@ sqlalchemy==2.0.36
 psycopg2-binary==2.9.10
 python-dotenv==1.0.1
 openai==1.58.1
-langchain==0.3.13
+langchain==0.3.30
 langchain-openai==0.2.14
 qdrant-client==1.17.1
 httpx==0.28.1
